@@ -14,6 +14,9 @@ module.exports = {
         yellowPrimary: "#ffe566",
         yellowSecondary: "#fff2b2",
       },
+      fontFamily: {
+        Author: ["Author", "sans-serif"],
+      },
     },
   },
   plugins: [],
