@@ -9,9 +9,9 @@ export const Hero = () => {
         <h2 className="px-4 text-3xl w-[350px] md:w-[450px] lg:w-[500px] md:text-4xl md:leading-[3rem] lg:text-5xl lg:leading-[4rem]">
           Be Kind to Your Mind: Mental Health Awareness Starts Here
         </h2>
-        <div className="">
+        <div className="my-4">
           <Image
-            src={"/mental-health-3.webp"}
+            src={"/mental-health.webp"}
             width={350}
             height={350}
             alt="Hero Image"
@@ -19,7 +19,7 @@ export const Hero = () => {
           />
         </div>
       </div>
-      <p className="mt-8 p-4 text-lg text-center md:text-2xl md:leading-8 md:w-[700px] md:mx-auto lg:py-2">
+      <p className="p-4 text-md text-center md:text-2xl md:leading-8 md:w-[700px] md:mx-auto lg:py-2">
         MindScape was created to provide information and resources for people
         looking to learn more about mental health, reduce stigma, promote
         self-care, connect people with mental health professionals and to offer
