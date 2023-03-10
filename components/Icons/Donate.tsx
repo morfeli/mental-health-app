@@ -5,7 +5,7 @@ export const Donate = () => {
       height="24"
       fill="none"
       viewBox="0 0 24 24"
-      className="absolute right-2"
+      className="absolute right-5"
     >
       <path
         stroke="currentColor"

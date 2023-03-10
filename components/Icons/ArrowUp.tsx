@@ -4,7 +4,7 @@ export const ArrowUp = () => {
       width="18"
       fill="none"
       viewBox="0 0 24 24"
-      className="absolute bottom-3 right-2"
+      className="absolute bottom-3 right-5"
     >
       <path
         stroke="currentColor"
