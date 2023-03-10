@@ -1,5 +1,3 @@
-import React from "react";
-
 export const Donate = () => {
   return (
     <svg
@@ -7,23 +5,15 @@ export const Donate = () => {
       height="24"
       fill="none"
       viewBox="0 0 24 24"
-      className="absolute right-1 bottom-2.5"
+      className="absolute right-2"
     >
-      <circle
-        cx="12"
-        cy="12"
-        r="7.25"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-      ></circle>
       <path
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
-        d="M14.25 8.75h-2.875c-.898 0-1.625.728-1.625 1.625v0c0 .898.727 1.625 1.625 1.625h1.25c.898 0 1.625.727 1.625 1.625v0c0 .898-.727 1.625-1.625 1.625H9.75M12 7.75v.5M12 15.75v.5"
+        d="M11.995 7.233c-1.45-1.623-3.867-2.06-5.683-.573-1.816 1.486-2.072 3.971-.645 5.73l6.328 5.86 6.329-5.86c1.426-1.759 1.201-4.26-.646-5.73-1.848-1.471-4.233-1.05-5.683.573z"
+        clipRule="evenodd"
       ></path>
     </svg>
   );
