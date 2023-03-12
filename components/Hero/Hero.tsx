@@ -11,7 +11,7 @@ export const Hero = () => {
       <h2 className="hidden mx-auto text-center md:block md:text-5xl lg:text-[3rem]">
         Be Kind to Your Mind:
       </h2>
-      <p className="hidden pt-2 mx-auto text-center md:block md:text-5xl lg:text-[3rem] lg:pt-8 md:w-[500px]">
+      <p className="hidden pt-2 mx-auto text-center md:block md:text-5xl lg:text-[3rem]  md:w-[500px] lg:leading-[60px]">
         Mental Health Awareness Starts Here
       </p>
       <p className="p-8 text-md text-center md:text-2xl md:w-[700px] lg:w-[1100px] md:mx-auto my-2 md:leading-8 lg:py-6 sm:text-lg">
