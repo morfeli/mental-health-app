@@ -10,7 +10,7 @@ export const HeroOverlay = ({ children, id }: HeroOverlayProps) => {
       id={id && id}
     >
       <div className="w-[1000px] h-[1000px] bg-bluePrimary blur-[200px] rounded-full absolute left-[35%] top-[-100px] " />
-      <div className="z-50 flex flex-col justify-between pt-24 lg:pt-44 sm:px-4">
+      <div className="z-50 flex flex-col justify-between pt-24 lg:pt-40 sm:px-4">
         {children}
       </div>
     </section>

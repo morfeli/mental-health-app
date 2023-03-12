@@ -40,9 +40,13 @@ export const Header = () => {
   }, [isOpen]);
 
   return (
-    <header className="fixed top-0 z-50 flex items-center justify-between w-screen px-6 py-4 bg-transparent md:px-14">
-      <h2 className="text-xl italic text-white">MindScape</h2>
-      <MobileBtn isOpen={isOpen} toggleMenu={toggleMenuHandler} />
+    <header className="fixed top-0 z-50 w-screen">
+      <div className="pb-[3px] bg-gradient-to-r from-emerald-800	 to-blue-500">
+        <div className="flex items-center justify-between w-screen px-6 py-1 bg-zinc-900 md:px-14">
+          <h2 className="text-xl italic text-white">MindScape</h2>
+          <MobileBtn isOpen={isOpen} toggleMenu={toggleMenuHandler} />
+        </div>
+      </div>
     </header>
   );
 };
