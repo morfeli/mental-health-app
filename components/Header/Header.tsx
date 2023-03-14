@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { MobileBtn } from "./MobileBtn";
+import { MobileMenu } from "./MobileMenu";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -44,6 +45,7 @@ export const Header = () => {
       <div className="flex items-center justify-between w-screen px-8 py-1 bg-opacity-50 bg-zinc-800">
         <h2 className="text-xl italic text-white z-[60]">MindScape</h2>
         <MobileBtn isOpen={isOpen} toggleMenu={toggleMenuHandler} />
+        <MobileMenu isOpen={isOpen} closeMenu={closeMenuHandler} />
       </div>
     </header>
   );
