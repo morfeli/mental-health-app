@@ -1,6 +1,7 @@
 import { DonateSVG } from "components/Icons/DonateSVG";
 import { SectionLayout } from "components/Layouts.tsx/SectionLayout";
 import { Button } from "components/UI/Button";
+import { LineBreak } from "components/UI/LineBreak";
 import { Progress } from "components/UI/Progress";
 import { HeroImage } from "../Hero/HeroImage";
 
@@ -33,6 +34,7 @@ export const Donate = () => {
 
         <HeroImage source="/mental-heath-image-donate.webp" />
       </div>
+      <LineBreak />
     </SectionLayout>
   );
 };

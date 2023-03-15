@@ -1,5 +1,6 @@
 import { HeroImage } from "components/LandingPage/Hero/HeroImage";
 import { SectionLayout } from "components/Layouts.tsx/SectionLayout";
+import { LineBreak } from "components/UI/LineBreak";
 
 export const About = () => {
   return (
@@ -25,6 +26,7 @@ export const About = () => {
         </div>
         <HeroImage source="/mental-health-image.webp" />
       </div>
+      <LineBreak />
     </SectionLayout>
   );
 };

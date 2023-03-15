@@ -12,6 +12,10 @@
   background-color: #67b99a;
 }
 
+.activeLink {
+  color: #0cbaba;
+}
+
 /* :root {
   --max-width: 1100px;
   --border-radius: 12px;
