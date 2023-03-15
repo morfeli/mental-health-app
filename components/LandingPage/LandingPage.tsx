@@ -4,6 +4,7 @@ import { Donate } from "./Donate/Donate";
 import { Footer } from "./Footer/Footer";
 import { Hero } from "./Hero/Hero";
 import { Resources } from "./Resources/Resources";
+import { Support } from "./Support/Support";
 
 export const LandingPage = () => {
   return (
@@ -13,6 +14,7 @@ export const LandingPage = () => {
       <About />
       <Donate />
       <Resources />
+      <Support />
       <Footer />
     </>
   );
