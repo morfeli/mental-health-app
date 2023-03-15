@@ -3,6 +3,10 @@ type HeroOverlayProps = {
   id?: string;
 };
 
+// green one 78c6a3
+//  green two 67b99a
+// green three 56ab91
+
 export const HeroOverlay = ({ children, id }: HeroOverlayProps) => {
   return (
     <section

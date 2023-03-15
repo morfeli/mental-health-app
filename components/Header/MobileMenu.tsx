@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { Button } from "components/UI/Button";
 import { AnimatePresence, motion } from "framer-motion";
 import NavItem from "./NavItem";
 
@@ -35,14 +36,14 @@ const itemVariants = {
 };
 
 const links = [
-  { name: "Dashboard", id: 1 },
+  { name: "About", id: 1 },
   { name: "Donate", id: 2 },
   { name: "Resources", id: 3 },
 ];
 
 export const MobileMenu = ({ isOpen, closeMenu }: MobileMenuProps) => {
   const navStyles =
-    "sm:hidden fixed w-[75vw] top-[77px] right-0 z-40 bg-gradient-to-t from-[#00b4d8] to-[#78c6a3] flex flex-col items-center justify-evenly h-screen";
+    "sm:hidden fixed w-[75vw] top-[77px] right-0 z-40 bg-gradient-to-t from-[#1a7373] via-[#67b99a] to-[#f2caa7] flex flex-col items-center justify-evenly h-screen";
 
   const ulStyles = classNames({
     hidden: !isOpen,
@@ -96,6 +97,7 @@ export const MobileMenu = ({ isOpen, closeMenu }: MobileMenuProps) => {
                 />
               );
             })}
+            <Button styles="bg-[#0cbaba]">Login</Button>
           </motion.ul>
 
           <p className="text-lg italic text-white">MindScape</p>

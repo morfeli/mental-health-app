@@ -2,7 +2,6 @@ import Head from "next/head";
 
 import { Inter } from "@next/font/google";
 import { Header } from "components/Header/Header";
-import { HeroOverlay } from "components/Layouts.tsx/HeroOverlay";
 import { Hero } from "components/Hero/Hero";
 
 const inter = Inter({ subsets: ["latin"] });
