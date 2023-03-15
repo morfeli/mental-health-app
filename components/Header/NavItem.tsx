@@ -4,9 +4,8 @@ import { motion } from "framer-motion";
 type NavItemProps = {
   link: string;
   name: string;
+  nav?: boolean;
   closeMenu?: React.MouseEventHandler<HTMLLIElement>;
-  isMobile?: boolean;
-  activeTab?: string;
   onClick?: () => void;
   variants?: {
     closed: {
@@ -18,15 +17,15 @@ type NavItemProps = {
   };
 };
 
-const NavItem = ({
-  closeMenu,
-  link,
-  variants,
-  isMobile,
-  name,
-  onClick,
-  activeTab,
-}: NavItemProps) => {
+const NavItem = ({ closeMenu, link, variants, nav, name }: NavItemProps) => {
+  const navItemStyle = classNames(
+    "list-none tracking-wide font-Author cursor-pointer transition-colors ease-in-out delay-75 after:block after:w-0 after:h-0.5 after:transition-all duration-700 hover:after:w-full after:bg-white",
+    {
+      "pl-12 lg:pl-20": nav,
+      "text-xl": nav,
+      "text-2xl": !nav,
+    }
+  );
   return (
     <motion.a
       variants={variants}
@@ -37,25 +36,9 @@ const NavItem = ({
         section && section.scrollIntoView({ behavior: "smooth" });
       }}
     >
-      {isMobile ? (
-        <li onClick={closeMenu}>{name}</li>
-      ) : (
-        <>
-          <li
-            id={`navLink-${link}`}
-            onClick={onClick}
-            className={classNames(
-              "flex items-center pl-8 h-28 mx-auto transition-colors delay-75 ease-in-out relative tracking-wide",
-              {
-                "bg-[#6c757d]": activeTab === name,
-                "hover:bg-[#adb5bd]": activeTab !== name,
-              }
-            )}
-          >
-            {name}
-          </li>
-        </>
-      )}
+      <li id={`navLink-${link}`} onClick={closeMenu} className={navItemStyle}>
+        {name}
+      </li>
     </motion.a>
   );
 };

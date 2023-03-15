@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { AnimatePresence, motion } from "framer-motion";
 import NavItem from "./NavItem";
 
@@ -40,10 +41,31 @@ const links = [
 ];
 
 export const MobileMenu = ({ isOpen, closeMenu }: MobileMenuProps) => {
+  const navStyles =
+    "sm:hidden fixed w-[75vw] top-[77px] right-0 z-40 bg-gradient-to-t from-[#00b4d8] to-[#78c6a3] flex flex-col items-center justify-evenly h-screen";
+
+  const ulStyles = classNames({
+    hidden: !isOpen,
+    "transition-all text-white flex flex-col items-center justify-between h-[60vh]":
+      isOpen,
+  });
+
+  // blue one 48cae4
+  // blue two 00b4d8
+  // blue three 62b6cb
+
+  // green one 78c6a3
+  //  green two 67b99a
+  // green three 56ab91
+
+  // 07bad5
+  // 0cbaba
+
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.nav
+          className={navStyles}
           aria-label="Site Navigation"
           role="navigation"
           variants={navBarVariants}
@@ -57,6 +79,7 @@ export const MobileMenu = ({ isOpen, closeMenu }: MobileMenuProps) => {
           }}
         >
           <motion.ul
+            className={ulStyles}
             initial="closed"
             animate="open"
             exit="closed"
@@ -74,6 +97,8 @@ export const MobileMenu = ({ isOpen, closeMenu }: MobileMenuProps) => {
               );
             })}
           </motion.ul>
+
+          <p className="text-lg italic text-white">MindScape</p>
         </motion.nav>
       )}
     </AnimatePresence>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { MobileBtn } from "./MobileBtn";
 import { MobileMenu } from "./MobileMenu";
+import { Navigation } from "./Navigation";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -41,11 +42,12 @@ export const Header = () => {
   }, [isOpen]);
 
   return (
-    <header className="fixed z-[60] w-screen transition duration-300 ease-in-out bg-opacity-50 shadow-lg transform-gpu border-b-2 backdrop-blur-sm ">
-      <div className="flex items-center justify-between w-screen px-8 py-1 bg-opacity-50 bg-zinc-800">
+    <header className="fixed z-[60] text-white w-screen transition duration-300 ease-in-out bg-opacity-50 shadow-lg transform-gpu border-b-2 backdrop-blur-sm ">
+      <div className="flex items-center justify-between w-screen px-8 py-3 bg-opacity-50 bg-zinc-800 sm:px-12 md:px-16 lg:px-24 xl:px-60 sm:py-6">
         <h2 className="text-xl italic text-white z-[60]">MindScape</h2>
         <MobileBtn isOpen={isOpen} toggleMenu={toggleMenuHandler} />
         <MobileMenu isOpen={isOpen} closeMenu={closeMenuHandler} />
+        <Navigation />
       </div>
     </header>
   );
