@@ -97,7 +97,7 @@ export const MobileMenu = ({ isOpen, closeMenu }: MobileMenuProps) => {
                 />
               );
             })}
-            <Button styles="bg-[#0cbaba]">Login</Button>
+            <Button styles="bg-[#0cbaba] w-[100px] py-2">Login</Button>
           </motion.ul>
 
           <p className="text-lg italic text-white">MindScape</p>
