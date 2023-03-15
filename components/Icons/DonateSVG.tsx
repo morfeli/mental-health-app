@@ -1,4 +1,4 @@
-export const Donate = () => {
+export const DonateSVG = () => {
   return (
     <svg
       width="24"

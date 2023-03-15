@@ -23,7 +23,7 @@ export const Hero = () => {
 
       <HeroButtons />
 
-      <HeroImage />
+      <HeroImage source="/mental-health.webp" />
     </HeroOverlay>
   );
 };
