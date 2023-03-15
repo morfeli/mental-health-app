@@ -18,7 +18,7 @@ export const About = () => {
             have - or think you have a mental health issue, you are not alone.
             MindScape was built to provide support, educate the public & to
             connect those who may be suffering with professional help. All
-            donations will proceed to NAMI, the National Aliicance on Mental
+            donations will proceed to NAMI, the National Alliance on Mental
             Illness. We are not partners with NAMI, just supporters.
           </p>
 
