@@ -19,7 +19,7 @@ export const Donate = () => {
             keep our donation wallet up and running nonetheless. We strive to
             create a better tomorrow - where all people affected by mental
             illness can experience hope, happiness and purpose. Together we can
-            make a significant change.
+            create a significant change.
           </p>
 
           <Progress value={0} />
