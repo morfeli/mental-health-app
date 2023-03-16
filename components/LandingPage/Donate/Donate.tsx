@@ -34,7 +34,7 @@ export const Donate = () => {
 
         <HeroImage source="/mental-heath-image-donate.webp" />
       </div>
-      <LineBreak />
+      {/* <LineBreak /> */}
     </SectionLayout>
   );
 };

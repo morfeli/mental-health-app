@@ -8,7 +8,7 @@ export const Navigation = () => {
         <NavItem name="About" link="About" nav />
         <NavItem name="Donate" link="Donate" nav />
         <NavItem name="Resources" link="Resources" nav />
-        <Button styles="py-0 bg-[#0cbaba] ml-12 w-[100px]">Login</Button>
+        <Button styles="bg-[#0cbaba] ml-12 w-[80px] py-0">Login</Button>
         {/* <NavItem name="Dashboard" link="Dashboard" nav /> */}
       </ul>
     </nav>

@@ -23,7 +23,7 @@ export const Resources = () => {
           <ArrowUp />
         </Button>
       </div>
-      <LineBreak />
+      {/* <LineBreak /> */}
     </SectionLayout>
   );
 };

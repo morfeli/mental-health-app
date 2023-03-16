@@ -26,7 +26,7 @@ export const About = () => {
         </div>
         <HeroImage source="/mental-health-image.webp" />
       </div>
-      <LineBreak />
+      {/* <LineBreak /> */}
     </SectionLayout>
   );
 };
