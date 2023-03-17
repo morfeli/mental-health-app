@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import { Button } from "components/UI/Button";
 import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
 import NavItem from "./NavItem";
 
 type MobileMenuProps = {
@@ -100,7 +101,9 @@ export const MobileMenu = ({ isOpen, closeMenu }: MobileMenuProps) => {
             <Button styles="bg-[#0cbaba] w-[100px] py-2">Login</Button>
           </motion.ul>
 
-          <p className="text-lg italic text-white">MindScape</p>
+          <Link href="/">
+            <p className="text-lg italic text-white">MindScape</p>
+          </Link>
         </motion.nav>
       )}
     </AnimatePresence>

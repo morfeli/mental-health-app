@@ -1,8 +1,10 @@
 import { DonateSVG } from "components/Icons/DonateSVG";
 import { SectionLayout } from "components/Layouts.tsx/SectionLayout";
 import { Button } from "components/UI/Button";
+import { DonateBtn } from "components/UI/DonateBtn";
 import { LineBreak } from "components/UI/LineBreak";
 import { Progress } from "components/UI/Progress";
+import Link from "next/link";
 import { HeroImage } from "../Hero/HeroImage";
 
 export const Donate = () => {
@@ -25,10 +27,7 @@ export const Donate = () => {
           <Progress value={0} />
 
           <div className="pt-12">
-            <Button styles="mx-auto w-[125px] pl-6 py-2 bg-[#168aad] text-white border-white border-[1px] shadow-2xl hover:bg-bluePrimary text-lg flex items-center relative">
-              Donate
-              <DonateSVG />
-            </Button>
+            <DonateBtn styles="mx-auto" />
           </div>
         </div>
 

@@ -31,11 +31,13 @@ export const LandingPage = () => {
   return (
     <>
       <Header />
-      <Hero />
-      <About />
-      <Donate />
-      <Resources />
-      <Support />
+      <main>
+        <Hero />
+        <About />
+        <Donate />
+        <Resources />
+        <Support />
+      </main>
       <Footer />
     </>
   );
