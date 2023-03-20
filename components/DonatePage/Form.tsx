@@ -22,7 +22,7 @@ export const Form = () => {
   };
   //   className="grid grid-cols-1 px-12 gap-y-4 gap-x-"
   return (
-    <form className="pt-8" onSubmit={submitFormHandler}>
+    <form className="pt-8 " onSubmit={submitFormHandler}>
       <StatusBar status={renderFormType} />
       <div>
         {renderFormType === "infoForm" && (

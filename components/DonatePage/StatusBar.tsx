@@ -8,15 +8,6 @@ type StatusBarProps = {
   status: string;
 };
 
-const statusPending =
-  "relative flex items-center justify-center w-5 h-5 bg-white border-2 border-blue-700 rounded-full";
-const statusInitial =
-  "bg-white rounded-full border-[3px] border-slate-200 w-5 h-5";
-
-const innerDot = () => {
-  return <div className="w-2 h-2 bg-blue-700 rounded-full" />;
-};
-
 export const StatusBar = ({ status }: StatusBarProps) => {
   const mindScapeCtx = useMindScapeContext();
 
@@ -64,17 +55,58 @@ export const StatusBar = ({ status }: StatusBarProps) => {
             />
           )}
         </div>
-        <div className="relative flex items-center justify-center">
+        <div
+          className={classNames(
+            "relative flex items-center justify-center w-5 h-5 rounded-full",
+            {
+              " bg-white border-2 border-blue-700 ": status === "donorWall",
+              "bg-blue-700 ": mindScapeCtx.donorWallIsValid,
+            }
+          )}
+        >
           {mindScapeCtx.donorWallIsValid && <CheckSVG />}
-          <p className="absolute text-[0.7rem] text-center top-7 w-[70px] text-slate-800">
+          <p className="absolute text-[0.7rem] top-7 text-slate-800">
             Donor Wall
           </p>
-          <div className="bg-white rounded-full border-[3px] border-slate-200 w-5 h-5" />
+          {status === "donorWall" ? (
+            <div className="w-2 h-2 bg-blue-700 rounded-full" />
+          ) : (
+            <div
+              className={classNames(
+                "bg-white rounded-full border-[3px] border-slate-200 w-5 h-5",
+                {
+                  hidden: mindScapeCtx.donorWallIsValid,
+                }
+              )}
+            />
+          )}
         </div>
-        <div className="relative flex items-center justify-center">
-          <p className="absolute text-[0.7rem] top-7 text-slate-800">Review</p>
-          <div className="bg-white rounded-full border-[3px] border-slate-200 w-5 h-5" />
-        </div>
+        {/* <div
+          className={classNames(
+            "relative flex items-center justify-center w-5 h-5 rounded-full",
+            {
+              " bg-white border-2 border-blue-700 ": status === "reviewForm",
+              "bg-blue-700 ": mindScapeCtx.donorWallIsValid,
+            }
+          )}
+        >
+          {mindScapeCtx.donorWallIsValid && <CheckSVG />}
+          <p className="absolute text-[0.7rem] top-7 text-slate-800">
+            Donor Wall
+          </p>
+          {status === "reviewForm" ? (
+            <div className="w-2 h-2 bg-blue-700 rounded-full" />
+          ) : (
+            <div
+              className={classNames(
+                "bg-white rounded-full border-[3px] border-slate-200 w-5 h-5",
+                {
+                  hidden: mindScapeCtx.donorWallIsValid,
+                }
+              )}
+            />
+          )}
+        </div> */}
       </div>
     </section>
   );

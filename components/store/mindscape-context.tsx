@@ -26,6 +26,7 @@ type MindScapeContextType = {
   infoDataIsValid: boolean;
   donorWallIsValid: boolean;
   paymentIsValid: boolean;
+  reviewIsValid: boolean;
 
   storeInfoData: (
     data: {
@@ -76,6 +77,7 @@ const MindScapeDefaultState = {
   infoDataIsValid: false,
   donorWallIsValid: false,
   paymentIsValid: false,
+  reviewIsValid: false,
 };
 
 export const MindScapeContext = createContext<MindScapeContextType>(
@@ -119,6 +121,7 @@ export const MindScapeProvider = ({ children }: MindScapeProviderProps) => {
   const [infoDataIsValid, setInfoDataIsValid] = useState<boolean>(false);
   const [paymentIsValid, setPaymentIsValid] = useState<boolean>(false);
   const [donorWallIsValid, setDonorWallIsValid] = useState<boolean>(false);
+  const [reviewIsValid, setReviewIsValid] = useState<boolean>(false);
 
   // Set State Handlers
 
@@ -168,6 +171,7 @@ export const MindScapeProvider = ({ children }: MindScapeProviderProps) => {
       infoDataIsValid,
       paymentIsValid,
       donorWallIsValid,
+      reviewIsValid,
     }),
     [
       storeInfoData,
@@ -179,6 +183,7 @@ export const MindScapeProvider = ({ children }: MindScapeProviderProps) => {
       infoDataIsValid,
       paymentIsValid,
       donorWallIsValid,
+      reviewIsValid,
     ]
   );
 
