@@ -1,23 +1,26 @@
 import classNames from "classnames";
 import { useMindScapeContext } from "components/store/useMindScapeContext";
 import { Button } from "components/UI/Button";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { formProps } from "./Form";
 
 export interface UserSignUp {
   firstName: string;
   lastName: string;
   email: string;
+  twitter: string;
 
   touched: {
     firstName: boolean;
     lastName: boolean;
     email: boolean;
+    twitter: boolean;
   };
   valid: {
     firstName: boolean;
     lastName: boolean;
     email: boolean;
+    twitter: boolean;
   };
 }
 
@@ -25,16 +28,19 @@ const intialFormState = {
   firstName: "",
   lastName: "",
   email: "",
+  twitter: "",
 
   touched: {
     firstName: false,
     lastName: false,
     email: false,
+    twitter: false,
   },
   valid: {
     firstName: true,
     lastName: true,
     email: true,
+    twitter: true,
   },
 };
 
@@ -44,15 +50,31 @@ export const InfoForm = ({ setFormType }: formProps) => {
 
   const [validInfoCredentials, setValidInfoCredentials] = useState(true);
 
+  useEffect(() => {
+    mindScapeCtx.storeInfoData(
+      {
+        firstName: "",
+        lastName: "",
+        email: "",
+        twitter: "",
+      },
+      false
+    );
+  }, []);
+
   const routeToPaymentForm = () => {
     if (!validInfoCredentials) {
       return;
     } else {
-      mindScapeCtx.storeInfoData({
-        firstName: form.firstName,
-        lastName: form.lastName,
-        email: form.email,
-      });
+      mindScapeCtx.storeInfoData(
+        {
+          firstName: form.firstName,
+          lastName: form.lastName,
+          email: form.email,
+          twitter: form.twitter,
+        },
+        true
+      );
       setFormType("paymentForm");
     }
   };
@@ -60,7 +82,7 @@ export const InfoForm = ({ setFormType }: formProps) => {
   return (
     <div className="flex flex-col justify-between">
       <h2>Info Credentials</h2>
-      <div className="mb-2">
+      <div>
         <label htmlFor="firstName">
           <input
             id="firstName"
@@ -78,7 +100,7 @@ export const InfoForm = ({ setFormType }: formProps) => {
             }
             value={form.firstName}
             className={classNames({
-              "p-2 rounded-md w-60 bg-light-gray border-none focus:outline-button-pink":
+              "p-2 rounded-md w-60 bg-light-gray border-none":
                 form.valid.firstName || form.touched.firstName,
               "p-2 rounded-md w-60 bg-light-gray border-b-2 border-red-900":
                 !form.valid.firstName && !form.touched.firstName,
@@ -86,7 +108,7 @@ export const InfoForm = ({ setFormType }: formProps) => {
           />
         </label>
       </div>
-      <div className="mb-2">
+      <div>
         <label htmlFor="lastName">
           <input
             id="lastName"
@@ -112,7 +134,7 @@ export const InfoForm = ({ setFormType }: formProps) => {
           />
         </label>
       </div>
-      <div className="flex flex-col items-center mb-2">
+      <div>
         <label htmlFor="email">
           <input
             id="email"
@@ -134,6 +156,32 @@ export const InfoForm = ({ setFormType }: formProps) => {
                 form.valid.email || form.touched.email,
               "p-2 rounded-md w-60 bg-light-gray border-b-2 border-red-900":
                 !form.valid.email && !form.touched.email,
+            })}
+          />
+        </label>
+      </div>
+      <div>
+        <label htmlFor="twitter">
+          <input
+            id="twitter"
+            type="text"
+            placeholder="Twitter @"
+            onChange={(e) =>
+              setForm((current) => ({
+                ...current,
+                twitter: e.target.value,
+                touched: {
+                  ...current.touched,
+                  twitter: true,
+                },
+              }))
+            }
+            value={form.twitter}
+            className={classNames({
+              "p-2 rounded-md w-60 bg-light-gray border-none focus:outline-button-pink":
+                form.valid.twitter || form.touched.twitter,
+              "p-2 rounded-md w-60 bg-light-gray border-b-2 border-red-900":
+                !form.valid.twitter && !form.touched.twitter,
             })}
           />
         </label>

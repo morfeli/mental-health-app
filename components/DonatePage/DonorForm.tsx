@@ -39,14 +39,27 @@ export const DonorForm = ({ setFormType }: formProps) => {
   const [validDonorWallMessage, setValidDonorWallMessage] = useState(true);
   const mindScapeCtx = useMindScapeContext();
 
+  useEffect(() => {
+    mindScapeCtx.storeDonorWallData(
+      {
+        fullName: "",
+        message: "",
+      },
+      false
+    );
+  }, []);
+
   const routeToReviewForm = () => {
     if (!validDonorWallMessage) {
       return;
     } else {
-      mindScapeCtx.storeDonorWallData({
-        fullName: form.fullName,
-        message: form.message,
-      });
+      mindScapeCtx.storeDonorWallData(
+        {
+          fullName: form.fullName,
+          message: form.message,
+        },
+        true
+      );
       setFormType("reviewForm");
     }
   };

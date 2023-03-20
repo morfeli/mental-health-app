@@ -57,29 +57,41 @@ export const PaymentForm = ({ setFormType }: formProps) => {
   const [validPaymentCredentials, setValidPaymentCredentials] = useState(true);
   const mindScapeCtx = useMindScapeContext();
 
+  useEffect(() => {
+    mindScapeCtx.storePaymentData(
+      {
+        cardName: "",
+        cardNumber: "",
+        expiration: "",
+        ccv: "",
+        zip: "",
+      },
+      false
+    );
+  }, []);
+
   const routeToDonorWallForm = () => {
     if (!validPaymentCredentials) {
       return;
     } else {
-      mindScapeCtx.storePaymentData({
-        cardName: form.cardName,
-        cardNumber: form.cardNumber,
-        expiration: form.expiration,
-        ccv: form.ccv,
-        zip: form.zip,
-      });
+      mindScapeCtx.storePaymentData(
+        {
+          cardName: form.cardName,
+          cardNumber: form.cardNumber,
+          expiration: form.expiration,
+          ccv: form.ccv,
+          zip: form.zip,
+        },
+        true
+      );
       setFormType("donorWall");
     }
   };
 
-  useEffect(() => {
-    console.log(mindScapeCtx.storedInfoData);
-  }, []);
-
   return (
     <div className="flex flex-col justify-between pb-12">
       <h2>Payment Credentials</h2>
-      <div className="mb-2">
+      <div>
         <label htmlFor="cardName">
           <input
             id="cardName"
@@ -105,7 +117,7 @@ export const PaymentForm = ({ setFormType }: formProps) => {
           />
         </label>
       </div>
-      <div className="mb-2">
+      <div>
         <label htmlFor="cardNumber">
           <input
             id="cardNumber"
@@ -131,7 +143,7 @@ export const PaymentForm = ({ setFormType }: formProps) => {
           />
         </label>
       </div>
-      <div className="flex flex-col items-center mb-2">
+      <div>
         <label htmlFor="expiration">
           <input
             id="expiration"
@@ -157,7 +169,7 @@ export const PaymentForm = ({ setFormType }: formProps) => {
           />
         </label>
       </div>
-      <div className="flex flex-col items-center mb-2">
+      <div>
         <label htmlFor="ccv">
           <input
             id="ccv"
@@ -183,7 +195,7 @@ export const PaymentForm = ({ setFormType }: formProps) => {
           />
         </label>
       </div>
-      <div className="flex flex-col items-center mb-2">
+      <div>
         <label htmlFor="zip">
           <input
             id="zip"

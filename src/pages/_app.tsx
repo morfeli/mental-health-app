@@ -5,7 +5,7 @@ import { MindScapeProvider } from "components/store/mindscape-context";
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <MindScapeProvider>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </MindScapeProvider>
   );
 }

@@ -9,6 +9,7 @@ type MindScapeContextType = {
     firstName: string;
     lastName: string;
     email: string;
+    twitter: string;
   };
   storedPaymentData: {
     cardName: string;
@@ -21,19 +22,34 @@ type MindScapeContextType = {
     fullName: string;
     message: string;
   };
-  storeInfoData: (data: {
-    firstName: string;
-    lastName: string;
-    email: string;
-  }) => void;
-  storePaymentData: (data: {
-    cardName: string;
-    cardNumber: string;
-    expiration: string;
-    ccv: string;
-    zip: string;
-  }) => void;
-  storeDonorWallData: (data: { fullName: string; message: string }) => void;
+
+  infoDataIsValid: boolean;
+  donorWallIsValid: boolean;
+  paymentIsValid: boolean;
+
+  storeInfoData: (
+    data: {
+      firstName: string;
+      lastName: string;
+      email: string;
+      twitter: string;
+    },
+    valid: boolean
+  ) => void;
+  storePaymentData: (
+    data: {
+      cardName: string;
+      cardNumber: string;
+      expiration: string;
+      ccv: string;
+      zip: string;
+    },
+    valid: boolean
+  ) => void;
+  storeDonorWallData: (
+    data: { fullName: string; message: string },
+    valid: boolean
+  ) => void;
 };
 
 const MindScapeDefaultState = {
@@ -44,6 +60,7 @@ const MindScapeDefaultState = {
     firstName: "",
     lastName: "",
     email: "",
+    twitter: "",
   },
   storedPaymentData: {
     cardName: "",
@@ -56,6 +73,9 @@ const MindScapeDefaultState = {
     fullName: "",
     message: "",
   },
+  infoDataIsValid: false,
+  donorWallIsValid: false,
+  paymentIsValid: false,
 };
 
 export const MindScapeContext = createContext<MindScapeContextType>(
@@ -67,10 +87,12 @@ export const MindScapeProvider = ({ children }: MindScapeProviderProps) => {
     firstName: string;
     lastName: string;
     email: string;
+    twitter: string;
   }>({
     firstName: "",
     lastName: "",
     email: "",
+    twitter: "",
   });
   const [storedPaymentData, setPaymentData] = useState<{
     cardName: string;
@@ -94,28 +116,45 @@ export const MindScapeProvider = ({ children }: MindScapeProviderProps) => {
     message: "",
   });
 
+  const [infoDataIsValid, setInfoDataIsValid] = useState<boolean>(false);
+  const [paymentIsValid, setPaymentIsValid] = useState<boolean>(false);
+  const [donorWallIsValid, setDonorWallIsValid] = useState<boolean>(false);
+
   // Set State Handlers
 
-  const storeInfoData = (data: {
-    firstName: string;
-    lastName: string;
-    email: string;
-  }) => {
+  const storeInfoData = (
+    data: {
+      firstName: string;
+      lastName: string;
+      email: string;
+      twitter: string;
+    },
+    valid: boolean
+  ) => {
     setInfoData(data);
+    setInfoDataIsValid(valid);
   };
 
-  const storePaymentData = (data: {
-    cardName: string;
-    cardNumber: string;
-    expiration: string;
-    ccv: string;
-    zip: string;
-  }) => {
+  const storePaymentData = (
+    data: {
+      cardName: string;
+      cardNumber: string;
+      expiration: string;
+      ccv: string;
+      zip: string;
+    },
+    valid: boolean
+  ) => {
     setPaymentData(data);
+    setPaymentIsValid(valid);
   };
 
-  const storeDonorWallData = (data: { fullName: string; message: string }) => {
+  const storeDonorWallData = (
+    data: { fullName: string; message: string },
+    valid: boolean
+  ) => {
     setDonorWallData(data);
+    setDonorWallIsValid(valid);
   };
 
   const state = useMemo(
@@ -126,6 +165,9 @@ export const MindScapeProvider = ({ children }: MindScapeProviderProps) => {
       storedInfoData,
       storedPaymentData,
       storedDonorWallData,
+      infoDataIsValid,
+      paymentIsValid,
+      donorWallIsValid,
     }),
     [
       storeInfoData,
@@ -134,6 +176,9 @@ export const MindScapeProvider = ({ children }: MindScapeProviderProps) => {
       storedPaymentData,
       storedPaymentData,
       storedDonorWallData,
+      infoDataIsValid,
+      paymentIsValid,
+      donorWallIsValid,
     ]
   );
 

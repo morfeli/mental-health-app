@@ -31,7 +31,7 @@ export const LandingPage = () => {
   return (
     <>
       <Header />
-      <main>
+      <main className="body h-fit">
         <Hero />
         <About />
         <Donate />
