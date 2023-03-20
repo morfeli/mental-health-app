@@ -1,10 +1,13 @@
 import type {
+  Dispatch,
   InputHTMLAttributes,
   LabelHTMLAttributes,
   SelectHTMLAttributes,
+  SetStateAction,
 } from "react";
 //   import type { SelectProps } from "@radix-ui/react-select";
 import classNames from "classnames";
+import { UserSignUp } from "./Form";
 
 //   import {
 //     Select,
@@ -14,7 +17,7 @@ import classNames from "classnames";
 //   } from "~/components/form/Select";
 
 const formClasses =
-  "block w-full appearance-none rounded-md border border-gray-200 bg-gray-50 px-3 py-2 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 sm:text-sm";
+  "block w-full appearance-none rounded-xl border border-gray-200 bg-gray-50 px-3 py-1  text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-blue-500 sm:text-sm";
 
 export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {}
 
@@ -22,7 +25,7 @@ export function Label({ id, children, ...props }: LabelProps) {
   return (
     <label
       htmlFor={id}
-      className="block mb-3 text-sm font-medium text-gray-700"
+      className="block mb-2 text-sm font-medium text-white"
       {...props}
     >
       {children}
@@ -34,7 +37,8 @@ export interface TextFieldProps {
   name: string;
   className?: string;
   type: InputHTMLAttributes<HTMLInputElement>["type"];
-
+  setInfo?: Dispatch<SetStateAction<UserSignUp>>;
+  dataType?: string;
   autoComplete?: InputHTMLAttributes<HTMLInputElement>["autoComplete"];
   children: LabelHTMLAttributes<HTMLLabelElement>["children"];
   value?: InputHTMLAttributes<HTMLInputElement>["defaultValue"];
@@ -47,6 +51,8 @@ export function TextField({
   children,
   autoComplete,
   value,
+  setInfo,
+  dataType,
 }: TextFieldProps) {
   return (
     <div className={className}>
@@ -58,6 +64,18 @@ export function TextField({
         autoComplete={autoComplete}
         id={name}
         className={classNames(formClasses, className)}
+        onChange={(e) => {
+          const dataType = name;
+          setInfo &&
+            setInfo((current) => ({
+              ...current,
+              dataType: e.target.value,
+              touched: {
+                ...current.touched,
+                firstName: true,
+              },
+            }));
+        }}
       />
 
       {/* {error && <span className="text-red">{error}</span>} */}

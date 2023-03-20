@@ -1,17 +1,15 @@
 import { Header } from "components/Header/Header";
 import { Form } from "components/DonatePage/Form";
 import { Footer } from "components/LandingPage/Footer/Footer";
-import { StatusBar } from "components/DonatePage/StatusBar";
 
 export default function DonatePage() {
   return (
-    <>
+    <div className="flex flex-col justify-between h-screen">
       <Header />
-      <main>
-        {/* <StatusBar /> */}
+      <main className="font-Author">
         <Form />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
