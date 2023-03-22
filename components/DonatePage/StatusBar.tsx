@@ -8,12 +8,25 @@ type StatusBarProps = {
   status: string;
 };
 
+const statusBarProgress = {
+  infoForm: 0,
+  paymentForm: 50,
+  donorWall: 100,
+};
+
 export const StatusBar = ({ status }: StatusBarProps) => {
   const mindScapeCtx = useMindScapeContext();
 
   return (
     <section className="pt-24 pb-16">
-      <div className="flex items-center justify-between w-[90vw] h-1 bg-slate-100 mx-auto">
+      <div className="flex items-center justify-between w-[90vw] h-1 bg-slate-100 mx-auto xl:flex-col xl:h-[95vh] xl:w-[5px] relative">
+        {/* <div
+          className={classNames("absolute h-1 bg-red-300", {
+            "w-0": status === "infoForm",
+            "w-[50%]": status === "paymentForm",
+            "w-[90vw]": status === "donorWall",
+          })}
+        /> */}
         <div
           className={classNames(
             "relative flex items-center justify-center w-5 h-5 border-2 border-blue-700 rounded-full",

@@ -22,7 +22,10 @@ export const Form = () => {
   };
   //   className="grid grid-cols-1 px-12 gap-y-4 gap-x-"
   return (
-    <form className="pt-8 " onSubmit={submitFormHandler}>
+    <form
+      className="pt-8 xl:flex xl:justify-between xl:items-center xl:w-[90vw] xl:mx-auto"
+      onSubmit={submitFormHandler}
+    >
       <StatusBar status={renderFormType} />
       <div>
         {renderFormType === "infoForm" && (
