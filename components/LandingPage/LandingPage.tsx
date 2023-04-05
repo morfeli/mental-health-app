@@ -8,6 +8,12 @@ import { Hero } from "./Hero/Hero";
 import { Resources } from "./Resources/Resources";
 import { Support } from "./Support/Support";
 
+const links = [
+  { name: "About", id: 1 },
+  { name: "Donate", id: 2 },
+  { name: "Resources", id: 3 },
+];
+
 export const LandingPage = () => {
   useEffect(() => {
     let section = document.querySelectorAll("section");
@@ -30,8 +36,8 @@ export const LandingPage = () => {
   }, []);
   return (
     <>
-      <Header />
-      <main>
+      <Header route="home" links={links} />
+      <main className="body">
         <Hero />
         <About />
         <Donate />

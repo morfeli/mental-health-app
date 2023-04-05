@@ -3,7 +3,7 @@ import { useMindScapeContext } from "components/store/useMindScapeContext";
 import { Button } from "components/UI/Button";
 import { GoBackBtn } from "components/UI/GoBackBtn";
 import { useEffect, useState } from "react";
-import { formProps } from "./Form";
+import { formProps } from "./ProcessForm";
 
 interface Donor {
   fullName: string;
@@ -49,7 +49,7 @@ export const DonorForm = ({ setFormType }: formProps) => {
     );
   }, []);
 
-  const routeToReviewForm = () => {
+  const routeToPaymentForm = () => {
     if (!validDonorWallMessage) {
       return;
     } else {
@@ -60,17 +60,15 @@ export const DonorForm = ({ setFormType }: formProps) => {
         },
         true
       );
-      setFormType("reviewForm");
+      setFormType!("paymentForm");
     }
   };
-  useEffect(() => {
-    console.log(mindScapeCtx.storedPaymentData, mindScapeCtx.storedInfoData);
-  }, []);
+
   return (
     <div className="flex flex-col justify-between">
-      <h2>Post a message on our Donor Wall</h2>
+      <h2 className="pb-4 pl-8 text-xl">Post a message on our Donor Wall</h2>
 
-      <div className="mb-2">
+      <div className="self-center pb-4">
         <label htmlFor="fullName">
           <input
             id="fullName"
@@ -88,16 +86,16 @@ export const DonorForm = ({ setFormType }: formProps) => {
             }
             value={form.fullName}
             className={classNames({
-              "p-2 rounded-md w-60 bg-light-gray border-none focus:outline-button-pink":
+              "p-2 rounded-md w-[75vw] bg-slate-200 outline-none border-none hover:shadow-xl hover:shadow-blue-300 transition-all cursor-pointer outline-offset-0 outline-2 focus:outline-purple-300":
                 form.valid.fullName || form.touched.fullName,
-              "p-2 rounded-md w-60 bg-light-gray border-b-2 border-red-900":
+              "p-2 rounded-md w-[75vw] bg-slate-200 border-b-2  border-red-600 border-2 shadow-red-600 placeholder-red-600 cursor-pointer hover:bg-slate-100 transition-colors delay-100 outline-none":
                 !form.valid.fullName && !form.touched.fullName,
             })}
           />
         </label>
       </div>
 
-      <div>
+      <div className="self-center pb-4">
         <label htmlFor="message">
           <textarea
             id="message"
@@ -113,17 +111,25 @@ export const DonorForm = ({ setFormType }: formProps) => {
                 },
               }))
             }
+            className={classNames({
+              "p-2 rounded-md w-[75vw] bg-slate-200 outline-none border-none hover:shadow-xl hover:shadow-blue-300 transition-all cursor-pointer outline-offset-0 outline-2 focus:outline-purple-300":
+                form.valid.message || form.touched.message,
+              "p-2 rounded-md w-[75vw] bg-slate-200 border-b-2  border-red-600 border-2 shadow-red-600 placeholder-red-600 cursor-pointer hover:bg-slate-100 transition-colors delay-100 outline-none":
+                !form.valid.message && !form.touched.message,
+            })}
             value={form.message}
           />
         </label>
       </div>
-      <div onClick={() => setFormType("paymentForm")}>
-        <GoBackBtn />
-      </div>
-      <div className="self-end" onClick={routeToReviewForm}>
-        <Button styles="bg-blue-700 text-white w-[80px] py-1 rounded-lg">
-          Next
-        </Button>
+      <div className="flex items-center justify-between mt-[3rem] px-10">
+        <div onClick={() => setFormType!("infoForm")}>
+          <GoBackBtn />
+        </div>
+        <div className="self-end " onClick={routeToPaymentForm}>
+          <Button styles="bg-blue-700 text-white w-[80px] py-1 rounded-lg">
+            Next
+          </Button>
+        </div>
       </div>
     </div>
   );

@@ -5,6 +5,7 @@ type NavItemProps = {
   link: string;
   name: string;
   nav?: boolean;
+  route?: string;
   closeMenu?: React.MouseEventHandler<HTMLLIElement>;
   onClick?: () => void;
   variants?: {
@@ -17,13 +18,21 @@ type NavItemProps = {
   };
 };
 
-const NavItem = ({ closeMenu, link, variants, nav, name }: NavItemProps) => {
+const NavItem = ({
+  closeMenu,
+  link,
+  variants,
+  nav,
+  name,
+  route,
+}: NavItemProps) => {
   const navItemStyle = classNames(
     "list-none tracking-wide font-Author cursor-pointer transition-colors ease-in-out delay-75 after:block after:w-0 after:h-0.5 after:transition-all duration-700 hover:after:w-full after:bg-white",
     {
       "pl-12 lg:pl-16": nav,
       "text-xl": nav,
       "text-2xl": !nav,
+      "text-[#dcdcdc]": route === "donate",
     }
   );
   return (

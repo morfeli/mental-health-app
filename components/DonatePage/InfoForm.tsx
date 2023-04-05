@@ -1,26 +1,30 @@
 import classNames from "classnames";
 import { useMindScapeContext } from "components/store/useMindScapeContext";
 import { Button } from "components/UI/Button";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { formProps } from "./Form";
+
+import { useEffect, useState } from "react";
+import { formProps } from "./ProcessForm";
 
 export interface UserSignUp {
   firstName: string;
   lastName: string;
   email: string;
   twitter: string;
+  amount: string;
 
   touched: {
     firstName: boolean;
     lastName: boolean;
     email: boolean;
     twitter: boolean;
+    amount: boolean;
   };
   valid: {
     firstName: boolean;
     lastName: boolean;
     email: boolean;
     twitter: boolean;
+    amount: boolean;
   };
 }
 
@@ -29,18 +33,21 @@ const intialFormState = {
   lastName: "",
   email: "",
   twitter: "",
+  amount: "",
 
   touched: {
     firstName: false,
     lastName: false,
     email: false,
     twitter: false,
+    amount: false,
   },
   valid: {
     firstName: true,
     lastName: true,
     email: true,
     twitter: true,
+    amount: true,
   },
 };
 
@@ -55,14 +62,13 @@ export const InfoForm = ({ setFormType }: formProps) => {
       {
         firstName: "",
         lastName: "",
-        email: "",
-        twitter: "",
+        amount: 0,
       },
       false
     );
   }, []);
 
-  const routeToPaymentForm = () => {
+  const routeToDonateForm = () => {
     if (!validInfoCredentials) {
       return;
     } else {
@@ -70,19 +76,18 @@ export const InfoForm = ({ setFormType }: formProps) => {
         {
           firstName: form.firstName,
           lastName: form.lastName,
-          email: form.email,
-          twitter: form.twitter,
+          amount: parseInt(form.amount),
         },
         true
       );
-      setFormType("paymentForm");
+      setFormType!("donorForm");
     }
   };
 
   return (
     <div className="flex flex-col justify-between">
-      <h2>Info Credentials</h2>
-      <div>
+      <h2 className="pb-4 pl-8 text-xl">Info Credentials</h2>
+      <div className="self-center pb-4">
         <label htmlFor="firstName">
           <input
             id="firstName"
@@ -100,15 +105,15 @@ export const InfoForm = ({ setFormType }: formProps) => {
             }
             value={form.firstName}
             className={classNames({
-              "p-2 rounded-md w-60 bg-light-gray border-none":
+              "p-2 rounded-md w-[75vw] bg-slate-200 outline-none border-none hover:shadow-xl hover:shadow-blue-300 transition-all cursor-pointer outline-offset-0 outline-2 focus:outline-purple-300":
                 form.valid.firstName || form.touched.firstName,
-              "p-2 rounded-md w-60 bg-light-gray border-b-2 border-red-900":
+              "p-2 rounded-md w-[75vw] bg-slate-200 border-b-2  border-red-600 border-2 shadow-red-600 placeholder-red-600 cursor-pointer hover:bg-slate-100 transition-colors delay-100 outline-none":
                 !form.valid.firstName && !form.touched.firstName,
             })}
           />
         </label>
       </div>
-      <div>
+      <div className="self-center pb-4">
         <label htmlFor="lastName">
           <input
             id="lastName"
@@ -126,68 +131,44 @@ export const InfoForm = ({ setFormType }: formProps) => {
             }
             value={form.lastName}
             className={classNames({
-              "p-2 rounded-md w-60 bg-light-gray border-none focus:outline-button-pink":
+              "p-2 rounded-md w-[75vw] bg-slate-200 outline-none border-none hover:shadow-xl hover:shadow-blue-300 transition-all cursor-pointer outline-offset-0 outline-2 focus:outline-purple-300":
                 form.valid.lastName || form.touched.lastName,
-              "p-2 rounded-md w-60 bg-light-gray border-b-2 border-red-900":
+              "p-2 rounded-md w-[75vw] bg-slate-200 border-b-2  border-red-600 border-2 shadow-red-600 placeholder-red-600 cursor-pointer hover:bg-slate-100 transition-colors delay-100 outline-none":
                 !form.valid.lastName && !form.touched.lastName,
             })}
           />
         </label>
       </div>
-      <div>
-        <label htmlFor="email">
+
+      <div className="self-center">
+        <label htmlFor="amount">
           <input
-            id="email"
-            type="email"
-            placeholder="Create a dummy email address"
+            id="amount"
+            type="number"
+            step="0.01"
+            placeholder="Donation Amount"
             onChange={(e) =>
               setForm((current) => ({
                 ...current,
-                email: e.target.value,
+                amount: e.target.value,
                 touched: {
                   ...current.touched,
-                  email: true,
+                  amount: true,
                 },
               }))
             }
-            value={form.email}
+            value={form.amount}
             className={classNames({
-              "p-2 rounded-md w-60 bg-light-gray border-none focus:outline-button-pink":
-                form.valid.email || form.touched.email,
-              "p-2 rounded-md w-60 bg-light-gray border-b-2 border-red-900":
-                !form.valid.email && !form.touched.email,
-            })}
-          />
-        </label>
-      </div>
-      <div>
-        <label htmlFor="twitter">
-          <input
-            id="twitter"
-            type="text"
-            placeholder="Twitter @"
-            onChange={(e) =>
-              setForm((current) => ({
-                ...current,
-                twitter: e.target.value,
-                touched: {
-                  ...current.touched,
-                  twitter: true,
-                },
-              }))
-            }
-            value={form.twitter}
-            className={classNames({
-              "p-2 rounded-md w-60 bg-light-gray border-none focus:outline-button-pink":
-                form.valid.twitter || form.touched.twitter,
-              "p-2 rounded-md w-60 bg-light-gray border-b-2 border-red-900":
-                !form.valid.twitter && !form.touched.twitter,
+              "p-2 rounded-md w-[75vw] bg-slate-200 outline-none border-none hover:shadow-xl hover:shadow-blue-300 transition-all cursor-pointer outline-offset-0 outline-2 focus:outline-purple-300":
+                form.valid.amount || form.touched.amount,
+              "p-2 rounded-md w-[75vw] bg-slate-200 border-b-2  border-red-600 border-2 shadow-red-600 placeholder-red-600 cursor-pointer hover:bg-slate-100 transition-colors delay-100 outline-none":
+                !form.valid.amount && !form.touched.amount,
             })}
           />
         </label>
       </div>
 
-      <div className="self-end pt-8" onClick={routeToPaymentForm}>
+      <div className="self-end mt-[3rem] mr-[4rem]" onClick={routeToDonateForm}>
         <Button styles="bg-blue-700 text-white w-[80px] py-1 rounded-lg">
           Next
         </Button>

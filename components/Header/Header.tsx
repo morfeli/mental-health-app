@@ -3,7 +3,15 @@ import { MobileBtn } from "./MobileBtn";
 import { MobileMenu } from "./MobileMenu";
 import { Navigation } from "./Navigation";
 
-export const Header = () => {
+type HeaderProps = {
+  route?: string;
+  links: {
+    name: string;
+    id: number;
+  }[];
+};
+
+export const Header = ({ route, links }: HeaderProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [innerWidth, setInnerWidth] = useState<number>();
 
@@ -46,7 +54,12 @@ export const Header = () => {
       <div className="flex items-center justify-between w-screen px-8 py-3 bg-opacity-40 bg-zinc-800 sm:px-12 md:px-16 lg:pl-24 sm:py-6">
         <h2 className="text-xl italic text-white z-[60]">MindScape</h2>
         <MobileBtn isOpen={isOpen} toggleMenu={toggleMenuHandler} />
-        <MobileMenu isOpen={isOpen} closeMenu={closeMenuHandler} />
+        <MobileMenu
+          isOpen={isOpen}
+          closeMenu={closeMenuHandler}
+          route={route}
+          links={links}
+        />
         <Navigation />
       </div>
     </header>

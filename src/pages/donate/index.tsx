@@ -1,13 +1,19 @@
+import { DonatePage } from "components/DonatePage/DonatePage";
 import { Header } from "components/Header/Header";
-import { Form } from "components/DonatePage/Form";
+
 import { Footer } from "components/LandingPage/Footer/Footer";
 
-export default function DonatePage() {
+const links = [
+  { name: "Home", id: 1 },
+  { name: "Resources", id: 2 },
+];
+
+export default function Donate() {
   return (
     <div className="flex flex-col justify-between h-screen font-Author">
-      <Header />
+      <Header route="donate" links={links} />
 
-      <Form />
+      <DonatePage />
 
       <Footer />
     </div>

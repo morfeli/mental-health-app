@@ -3,7 +3,7 @@ import { useMindScapeContext } from "components/store/useMindScapeContext";
 import { Button } from "components/UI/Button";
 import { GoBackBtn } from "components/UI/GoBackBtn";
 import { useEffect, useState } from "react";
-import { formProps } from "./Form";
+import { formProps } from "./ProcessForm";
 
 interface Payment {
   cardName: string;
@@ -84,7 +84,7 @@ export const PaymentForm = ({ setFormType }: formProps) => {
         },
         true
       );
-      setFormType("donorWall");
+      setFormType!("donorWall");
     }
   };
 
@@ -222,7 +222,7 @@ export const PaymentForm = ({ setFormType }: formProps) => {
         </label>
       </div>
 
-      <div onClick={() => setFormType("infoForm")}>
+      <div onClick={() => setFormType!("infoForm")}>
         <GoBackBtn />
       </div>
       <div className="self-end" onClick={routeToDonorWallForm}>

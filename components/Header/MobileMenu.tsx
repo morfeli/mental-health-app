@@ -7,6 +7,11 @@ import NavItem from "./NavItem";
 type MobileMenuProps = {
   isOpen: boolean;
   closeMenu: React.MouseEventHandler<HTMLLIElement>;
+  route?: string;
+  links: {
+    name: string;
+    id: number;
+  }[];
 };
 
 const navBarVariants = {
@@ -36,32 +41,33 @@ const itemVariants = {
   open: { opacity: 1 },
 };
 
-const links = [
-  { name: "About", id: 1 },
-  { name: "Donate", id: 2 },
-  { name: "Resources", id: 3 },
-];
+// const links = [
+//   { name: "About", id: 1 },
+//   { name: "Donate", id: 2 },
+//   { name: "Resources", id: 3 },
+// ];
 
-export const MobileMenu = ({ isOpen, closeMenu }: MobileMenuProps) => {
-  const navStyles =
-    "sm:hidden fixed w-[75vw] top-[77px] right-0 z-40 bg-gradient-to-t from-[#1a7373] via-[#67b99a] to-[#f2caa7] flex flex-col items-center justify-evenly h-screen";
+export const MobileMenu = ({
+  isOpen,
+  closeMenu,
+  route,
+  links,
+}: MobileMenuProps) => {
+  const navStyles = classNames(
+    "sm:hidden fixed w-[75vw] top-[77px] right-0 z-40  flex flex-col items-center justify-evenly h-screen",
+    {
+      "bg-gradient-to-t from-[#1a7373] via-[#67b99a] to-[#f2caa7]":
+        route === "home",
+      "bg-gradient-to-t from-[#2e7e9b] via-[#3e9cb9] to-[#62b5ce]":
+        route === "donate",
+    }
+  );
 
   const ulStyles = classNames({
     hidden: !isOpen,
     "transition-all text-white flex flex-col items-center justify-between h-[60vh]":
       isOpen,
   });
-
-  // blue one 48cae4
-  // blue two 00b4d8
-  // blue three 62b6cb
-
-  // green one 78c6a3
-  //  green two 67b99a
-  // green three 56ab91
-
-  // 07bad5
-  // 0cbaba
 
   return (
     <AnimatePresence>
@@ -95,6 +101,7 @@ export const MobileMenu = ({ isOpen, closeMenu }: MobileMenuProps) => {
                   link={name}
                   variants={itemVariants}
                   closeMenu={closeMenu}
+                  route={route}
                 />
               );
             })}

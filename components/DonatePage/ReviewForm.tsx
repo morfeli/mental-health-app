@@ -1,7 +1,8 @@
 import { useMindScapeContext } from "components/store/useMindScapeContext";
 import { GoBackBtn } from "components/UI/GoBackBtn";
 import { PayBtn } from "components/UI/PayBtn";
-import { formProps } from "./Form";
+import { formProps } from "./DonatePage";
+import { StripeForm } from "./StripeForm";
 
 export const ReviewForm = ({ setFormType }: formProps) => {
   const mindScapeCtx = useMindScapeContext();
@@ -22,6 +23,10 @@ export const ReviewForm = ({ setFormType }: formProps) => {
         {mindScapeCtx.storedPaymentData.expiration}
         {mindScapeCtx.storedPaymentData.ccv}
         {mindScapeCtx.storedPaymentData.zip}
+      </div>
+
+      <div>
+        <StripeForm />
       </div>
 
       <div>
