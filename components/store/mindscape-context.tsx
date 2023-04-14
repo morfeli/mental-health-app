@@ -8,6 +8,7 @@ type MindScapeContextType = {
   storedInfoData: {
     firstName: string;
     lastName: string;
+    email: string;
     amount: number;
   };
 
@@ -25,6 +26,7 @@ type MindScapeContextType = {
     data: {
       firstName: string;
       lastName: string;
+      email: string;
       amount: number;
     },
     valid: boolean
@@ -43,6 +45,7 @@ const MindScapeDefaultState = {
   storedInfoData: {
     firstName: "",
     lastName: "",
+    email: "",
     amount: 0,
   },
   storedDonorWallData: {
@@ -63,10 +66,12 @@ export const MindScapeProvider = ({ children }: MindScapeProviderProps) => {
   const [storedInfoData, setInfoData] = useState<{
     firstName: string;
     lastName: string;
+    email: string;
     amount: number;
   }>({
     firstName: "",
     lastName: "",
+    email: "",
     amount: 0,
   });
 
@@ -89,6 +94,7 @@ export const MindScapeProvider = ({ children }: MindScapeProviderProps) => {
     data: {
       firstName: string;
       lastName: string;
+      email: string;
       amount: number;
     },
     valid: boolean

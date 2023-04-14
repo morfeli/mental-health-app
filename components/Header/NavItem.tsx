@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 type NavItemProps = {
   link: string;
@@ -35,6 +36,16 @@ const NavItem = ({
       "text-[#dcdcdc]": route === "donate",
     }
   );
+
+  if (route === "donate") {
+    return (
+      <Link href={link}>
+        <li className={navItemStyle} id={`navLink-${link}`} onClick={closeMenu}>
+          {name}
+        </li>
+      </Link>
+    );
+  }
   return (
     <motion.a
       id={`navLink-${link}`}

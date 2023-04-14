@@ -10,6 +10,7 @@ import { useMindScapeContext } from "components/store/useMindScapeContext";
 import { formProps } from "./ProcessForm";
 import { StripeError } from "@stripe/stripe-js";
 import { GoBackBtn } from "components/UI/GoBackBtn";
+import { FormLayout } from "components/Layouts.tsx/FormLayout";
 
 export const CheckoutForm = ({ setFormType }: formProps) => {
   const mindScapeCtx = useMindScapeContext();
@@ -47,8 +48,6 @@ export const CheckoutForm = ({ setFormType }: formProps) => {
 
     const clientSecret = await res.json();
 
-    console.log(clientSecret.clientSecret);
-
     // Confirm the PaymentIntent using the details collected by the Payment Element
     const { error } = await stripe.confirmPayment({
       elements,
@@ -66,42 +65,39 @@ export const CheckoutForm = ({ setFormType }: formProps) => {
       // Your customer is redirected to your `return_url`. For some payment
       // methods like iDEAL, your customer is redirected to an intermediate
       // site first to authorize the payment, then redirected to the `return_url`.
-      setFormType!("success");
+      // setFormType!("success");
       mindScapeCtx.paymentValidityHandler();
       setIsLoading(false);
     }
   };
 
   return (
-    <form
-      id="payment-form"
-      onSubmit={handleSubmit}
-      className="flex flex-col p-4"
-    >
-      <PaymentElement id="payment-element" />
-
-      <div className="flex items-center justify-between">
-        <div onClick={() => setFormType!("donorForm")}>
+    <FormLayout>
+      <div className="w-[500px] h-[500px] bg-gradient-to-br from-bluePrimary to-blueSecondary blur-[100px] rounded-full absolute left-[-30%] top-[-30%]" />
+      <div className="w-[500px] h-[500px] bg-gradient-to-br from-blueSecondary to-bluePrimary blur-[100px] rounded-full absolute right-[-10%] top-[400px]" />
+      <form
+        id="payment-form"
+        onSubmit={handleSubmit}
+        className="relative flex flex-col p-2"
+      >
+        <div onClick={() => setFormType!("donorForm")} className="mb-4 w-fit">
           <GoBackBtn />
         </div>
+        <h2 className="pb-8 pl-2 text-3xl text-white">Confirm payment</h2>
+
+        <PaymentElement id="payment-element" />
 
         <button
           disabled={isLoading || !stripe || !elements}
           id="submit"
-          className="bg-blue-600 text-white p-2 w-[200px] rounded-md self-center my-8"
+          className="bg-gradient-to-r from-[#0069a6] to-[#79d3ff] w-[300px] rounded-md self-center py-2 mt-8 text-white transition-all duration-300 hover:ring-2 hover:ring-slate-300"
         >
-          <span id="button-text">
-            {isLoading ? (
-              <div className="spinner" id="spinner"></div>
-            ) : (
-              "Pay now"
-            )}
-          </span>
+          <span id="button-text">Donate now</span>
         </button>
-      </div>
 
-      {/* Show any error or success messages */}
-      {message && <div id="payment-message">{message}</div>}
-    </form>
+        {/* Show any error or success messages */}
+        {message && <div id="payment-message">{message}</div>}
+      </form>
+    </FormLayout>
   );
 };

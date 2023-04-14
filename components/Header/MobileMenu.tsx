@@ -7,9 +7,10 @@ import NavItem from "./NavItem";
 type MobileMenuProps = {
   isOpen: boolean;
   closeMenu: React.MouseEventHandler<HTMLLIElement>;
-  route?: string;
+  route: string;
   links: {
     name: string;
+    link: string;
     id: number;
   }[];
 };
@@ -41,12 +42,6 @@ const itemVariants = {
   open: { opacity: 1 },
 };
 
-// const links = [
-//   { name: "About", id: 1 },
-//   { name: "Donate", id: 2 },
-//   { name: "Resources", id: 3 },
-// ];
-
 export const MobileMenu = ({
   isOpen,
   closeMenu,
@@ -56,10 +51,9 @@ export const MobileMenu = ({
   const navStyles = classNames(
     "sm:hidden fixed w-[75vw] top-[77px] right-0 z-40  flex flex-col items-center justify-evenly h-screen",
     {
-      "bg-gradient-to-t from-[#1a7373] via-[#67b99a] to-[#f2caa7]":
-        route === "home",
       "bg-gradient-to-t from-[#2e7e9b] via-[#3e9cb9] to-[#62b5ce]":
-        route === "donate",
+        route === "home",
+      "bg-slate-200": route === "donate",
     }
   );
 
@@ -93,12 +87,12 @@ export const MobileMenu = ({
             exit="closed"
             variants={sideVariants}
           >
-            {links.map(({ name }, i) => {
+            {links.map(({ name, link }, i) => {
               return (
                 <NavItem
                   key={name}
                   name={name}
-                  link={name}
+                  link={link}
                   variants={itemVariants}
                   closeMenu={closeMenu}
                   route={route}

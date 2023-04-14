@@ -14,6 +14,8 @@ module.exports = {
         greenSecondary: "#76c893",
         yellowPrimary: "#ffe566",
         yellowSecondary: "#fff2b2",
+        overLay: "rgba(0, 0, 0, 0.2)",
+        overLay2: "rgba(0,0,0,0.1)",
       },
       fontFamily: {
         Author: ["Author", "sans-serif"],

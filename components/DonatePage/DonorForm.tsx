@@ -2,8 +2,10 @@ import classNames from "classnames";
 import { useMindScapeContext } from "components/store/useMindScapeContext";
 import { Button } from "components/UI/Button";
 import { GoBackBtn } from "components/UI/GoBackBtn";
+import { NextBtn } from "components/UI/NextBtn";
 import { useEffect, useState } from "react";
 import { formProps } from "./ProcessForm";
+import { FormLayout } from "components/Layouts.tsx/FormLayout";
 
 interface Donor {
   fullName: string;
@@ -33,7 +35,9 @@ const initialFormState = {
   },
 };
 
-export const DonorForm = ({ setFormType }: formProps) => {
+const isEmpty = (value: string) => value.trim() === "";
+
+export const DonorForm = ({ setFormType, status }: formProps) => {
   const [form, setForm] = useState<Donor>(initialFormState);
 
   const [validDonorWallMessage, setValidDonorWallMessage] = useState(true);
@@ -50,25 +54,71 @@ export const DonorForm = ({ setFormType }: formProps) => {
   }, []);
 
   const routeToPaymentForm = () => {
-    if (!validDonorWallMessage) {
+    const fullNameIsValid = !isEmpty(form.fullName);
+    const messageIsValid = !isEmpty(form.message);
+
+    setForm((current) => ({
+      ...current,
+      valid: {
+        fullName: fullNameIsValid,
+        message: messageIsValid,
+      },
+    }));
+
+    const formIsValid = fullNameIsValid && messageIsValid;
+
+    if (!formIsValid) {
       return;
     } else {
-      mindScapeCtx.storeDonorWallData(
-        {
-          fullName: form.fullName,
-          message: form.message,
-        },
-        true
-      );
-      setFormType!("paymentForm");
+      const data = {
+        fullName: form.fullName,
+        message: form.message,
+      };
+
+      // TODO: send post request to backend api - validate on the server - send back response and update the status
+
+      fetch("/api/donorWall", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json" },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (!data) {
+            return;
+          } else {
+            console.log(data);
+          }
+
+          const { fullName, message } = data.data;
+
+          mindScapeCtx.storeDonorWallData(
+            {
+              fullName: fullName,
+              message: message,
+            },
+            true
+          );
+          setFormType!(data.formType);
+        });
     }
   };
 
   return (
-    <div className="flex flex-col justify-between">
-      <h2 className="pb-4 pl-8 text-xl">Post a message on our Donor Wall</h2>
+    <FormLayout status={status}>
+      <div className="w-[500px] h-[500px] bg-gradient-to-br from-bluePrimary to-blueSecondary blur-[50px] rounded-full absolute left-[-30%] top-[-50%]" />
+      <div className="w-[500px] h-[500px] bg-gradient-to-br from-blueSecondary to-bluePrimary blur-[50px] rounded-full absolute right-[-60%] top-[200px]" />
+      <div
+        onClick={() => setFormType!("infoForm")}
+        className="relative pb-4 pl-6 w-fit"
+      >
+        <GoBackBtn />
+      </div>
+      <h2 className="relative pb-4 pl-8 text-3xl text-white">
+        Donor wall post
+      </h2>
 
-      <div className="self-center pb-4">
+      <div className="relative self-center pb-6">
         <label htmlFor="fullName">
           <input
             id="fullName"
@@ -86,16 +136,16 @@ export const DonorForm = ({ setFormType }: formProps) => {
             }
             value={form.fullName}
             className={classNames({
-              "p-2 rounded-md w-[75vw] bg-slate-200 outline-none border-none hover:shadow-xl hover:shadow-blue-300 transition-all cursor-pointer outline-offset-0 outline-2 focus:outline-purple-300":
+              "rounded-lg bg-white text-sky-500 p-2 xl:py-3 xl:pl-4 w-[75vw] placeholder:text-sky-500 xl:w-[375px] border-2 border-sky-800 outline-none transition-all cursor-pointer hover:shadow-md hover:shadow-slate-500 focus:bg-sky-100 text-xl":
                 form.valid.fullName || form.touched.fullName,
-              "p-2 rounded-md w-[75vw] bg-slate-200 border-b-2  border-red-600 border-2 shadow-red-600 placeholder-red-600 cursor-pointer hover:bg-slate-100 transition-colors delay-100 outline-none":
+              "p-2 rounded-md w-[75vw] xl:w-[375px] bg-slate-200 border-b-2  border-red-600 border-2 shadow-red-600 placeholder-red-600 cursor-pointer hover:bg-slate-100 transition-colors delay-100 outline-none text-lg":
                 !form.valid.fullName && !form.touched.fullName,
             })}
           />
         </label>
       </div>
 
-      <div className="self-center pb-4">
+      <div className="relative self-center pb-4">
         <label htmlFor="message">
           <textarea
             id="message"
@@ -112,25 +162,19 @@ export const DonorForm = ({ setFormType }: formProps) => {
               }))
             }
             className={classNames({
-              "p-2 rounded-md w-[75vw] bg-slate-200 outline-none border-none hover:shadow-xl hover:shadow-blue-300 transition-all cursor-pointer outline-offset-0 outline-2 focus:outline-purple-300":
+              "scroll-pb-12 rounded-lg bg-white text-sky-500 p-2 xl:py-3 xl:pl-4 w-[75vw] placeholder:text-sky-500 xl:w-[375px] border-2 border-sky-800 outline-none transition-all cursor-pointer hover:shadow-md hover:shadow-slate-500 focus:bg-sky-100 text-xl":
                 form.valid.message || form.touched.message,
-              "p-2 rounded-md w-[75vw] bg-slate-200 border-b-2  border-red-600 border-2 shadow-red-600 placeholder-red-600 cursor-pointer hover:bg-slate-100 transition-colors delay-100 outline-none":
+              "p-2 rounded-md w-[75vw] bg-slate-200 border-b-2 xl:w-[375px] border-red-600 border-2 shadow-red-600 placeholder-red-600 cursor-pointer hover:bg-slate-100 transition-colors delay-100 outline-none text-lg":
                 !form.valid.message && !form.touched.message,
             })}
             value={form.message}
           />
         </label>
       </div>
-      <div className="flex items-center justify-between mt-[3rem] px-10">
-        <div onClick={() => setFormType!("infoForm")}>
-          <GoBackBtn />
-        </div>
-        <div className="self-end " onClick={routeToPaymentForm}>
-          <Button styles="bg-blue-700 text-white w-[80px] py-1 rounded-lg">
-            Next
-          </Button>
-        </div>
+
+      <div className="self-center mt-[3rem]" onClick={routeToPaymentForm}>
+        <NextBtn />
       </div>
-    </div>
+    </FormLayout>
   );
 };

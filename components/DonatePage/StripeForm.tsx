@@ -14,8 +14,6 @@ export const StripeForm = ({ setFormType }: formProps) => {
   const mindScapeCtx = useMindScapeContext();
   const [options, setOptions] = useState<{}>();
 
-  const bg = "bg-slate-300";
-
   const appearance = {
     theme: "flat",
     labels: "floating",

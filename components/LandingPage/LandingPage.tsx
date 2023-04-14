@@ -9,9 +9,9 @@ import { Resources } from "./Resources/Resources";
 import { Support } from "./Support/Support";
 
 const links = [
-  { name: "About", id: 1 },
-  { name: "Donate", id: 2 },
-  { name: "Resources", id: 3 },
+  { name: "About", link: "About", id: 1 },
+  { name: "Donate", link: "Donate", id: 2 },
+  { name: "Resources", link: "Resources", id: 3 },
 ];
 
 export const LandingPage = () => {

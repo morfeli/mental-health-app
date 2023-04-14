@@ -8,7 +8,7 @@ export const Footer = ({ styles }: FooterProps) => {
   return (
     <footer
       className={classNames(
-        "bg-[#168aad] text-white flex justify-between p-6",
+        "bg-[#168aad] text-white flex justify-between p-6 relative z-50",
         styles
       )}
     >

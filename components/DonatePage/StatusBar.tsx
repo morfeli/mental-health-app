@@ -11,46 +11,50 @@ export const StatusBar = ({ status }: StatusBarProps) => {
   const mindScapeCtx = useMindScapeContext();
 
   return (
-    <section className="py-8">
-      <div className="flex items-center justify-between w-[90vw] h-1 bg-slate-100 mx-auto  relative">
+    <div className="pt-8 pb-2">
+      <div className="flex items-center justify-between w-[90vw] h-1 bg-gradient-to-t from-gray-900 via-gray-100 to-gray-900 mx-auto relative xl:w-[600px]">
         <div
           className={classNames(
-            "relative flex items-center justify-center w-5 h-5 border-2 border-blue-700 rounded-full",
+            "h-1 bg-bluePrimary transition-all ease-in-out delay-150 duration-1000 absolute",
+            {
+              "w-0": status === "infoForm",
+              "w-[50%]": status === "donorForm",
+              "w-[100%]": status === "paymentForm",
+            }
+          )}
+        />
+        <div
+          className={classNames(
+            "relative flex items-center justify-center w-5 h-5 border-4 border-bluePrimary rounded-full",
             {
               "bg-white": status === "infoForm",
-              "bg-blue-700":
+              "bg-bluePrimary":
                 status === "paymentForm" || "donorWall" || "reviewForm",
             }
           )}
         >
           {mindScapeCtx.infoDataIsValid && <CheckSVG />}
           {status === "infoForm" && (
-            <div className="w-2 h-2 bg-blue-700 rounded-full" />
+            <div className="w-2 h-2 rounded-full bg-bluePrimary" />
           )}
-
-          <p className="absolute text-[0.7rem] top-6 text-slate-800 hidden xl:flex">
-            Info
-          </p>
         </div>
         <div
           className={classNames(
             "relative flex items-center justify-center w-5 h-5 rounded-full",
             {
-              " bg-white border-2 border-blue-700 ": status === "donorForm",
-              "bg-blue-700 ": mindScapeCtx.donorWallIsValid,
+              " bg-white border-4 border-bluePrimary ": status === "donorForm",
+              "bg-bluePrimary": mindScapeCtx.donorWallIsValid,
             }
           )}
         >
           {mindScapeCtx.donorWallIsValid && <CheckSVG />}
-          <p className="absolute text-[0.7rem] top-7 text-slate-800 hidden xl:flex">
-            Donor Wall
-          </p>
+
           {status === "donorForm" ? (
-            <div className="w-2 h-2 bg-blue-700 rounded-full" />
+            <div className="w-2 h-2 rounded-full bg-bluePrimary" />
           ) : (
             <div
               className={classNames(
-                "bg-white rounded-full border-[3px] border-slate-200 w-5 h-5",
+                "bg-white rounded-full border-[3px] border-slate-500 w-5 h-5",
                 {
                   hidden: mindScapeCtx.donorWallIsValid,
                 }
@@ -62,21 +66,20 @@ export const StatusBar = ({ status }: StatusBarProps) => {
           className={classNames(
             "relative flex items-center justify-center w-5 h-5 rounded-full",
             {
-              " bg-white border-2 border-blue-700 ": status === "paymentForm",
-              "bg-blue-700 ": mindScapeCtx.paymentIsValid,
+              " bg-white border-4 border-bluePrimary ":
+                status === "paymentForm",
+              "bg-bluePrimary ": mindScapeCtx.paymentIsValid,
             }
           )}
         >
           {mindScapeCtx.paymentIsValid && <CheckSVG />}
-          <p className="absolute text-[0.7rem] top-7 text-slate-800 hidden xl:flex">
-            Payment
-          </p>
+
           {status === "paymentForm" ? (
-            <div className="w-2 h-2 bg-blue-700 rounded-full" />
+            <div className="w-2 h-2 rounded-full bg-bluePrimary" />
           ) : (
             <div
               className={classNames(
-                "bg-white rounded-full border-[3px] border-slate-200 w-5 h-5",
+                "bg-white rounded-full border-[3px] border-slate-500 w-5 h-5",
                 {
                   hidden: mindScapeCtx.paymentIsValid,
                 }
@@ -85,6 +88,6 @@ export const StatusBar = ({ status }: StatusBarProps) => {
           )}
         </div>
       </div>
-    </section>
+    </div>
   );
 };
