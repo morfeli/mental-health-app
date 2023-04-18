@@ -1,4 +1,4 @@
-import React, { FormEvent, useEffect, useState } from "react";
+import React, { FormEvent, useState } from "react";
 import {
   PaymentElement,
   useStripe,
@@ -65,7 +65,6 @@ export const CheckoutForm = ({ setFormType }: formProps) => {
       // Your customer is redirected to your `return_url`. For some payment
       // methods like iDEAL, your customer is redirected to an intermediate
       // site first to authorize the payment, then redirected to the `return_url`.
-      // setFormType!("success");
       mindScapeCtx.paymentValidityHandler();
       setIsLoading(false);
     }

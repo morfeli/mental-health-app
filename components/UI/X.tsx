@@ -1,11 +1,11 @@
-export const Close = () => {
+export const X = () => {
   return (
     <svg
-      width="40"
-      height="40"
+      width="24"
+      height="24"
       fill="none"
       viewBox="0 0 24 24"
-      className="absolute cursor-pointer top-6 right-5"
+      className="cursor-pointer"
     >
       <path
         stroke="currentColor"

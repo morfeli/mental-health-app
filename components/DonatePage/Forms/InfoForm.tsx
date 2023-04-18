@@ -115,8 +115,6 @@ export const InfoForm = ({ setFormType }: formProps) => {
         amount: form.amount,
       };
 
-      // TODO: send post request to backend api - validate on the server - send back response and update the status
-
       fetch("/api/infoCredenitals", {
         method: "POST",
         body: JSON.stringify(data),
