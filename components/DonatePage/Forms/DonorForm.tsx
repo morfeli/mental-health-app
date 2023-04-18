@@ -73,6 +73,7 @@ export const DonorForm = ({ setFormType, status }: formProps) => {
       const data = {
         fullName: form.fullName,
         message: form.message,
+        amount: mindScapeCtx.storedInfoData.amount,
       };
 
       // TODO: send post request to backend api - validate on the server - send back response and update the status
@@ -90,7 +91,7 @@ export const DonorForm = ({ setFormType, status }: formProps) => {
             console.log(data);
           }
 
-          const { fullName, message } = data.data;
+          const { fullName, message } = data.newPost;
 
           mindScapeCtx.storeDonorWallData(
             {
@@ -106,8 +107,8 @@ export const DonorForm = ({ setFormType, status }: formProps) => {
 
   return (
     <FormLayout status={status}>
-      <div className="w-[500px] h-[500px] bg-gradient-to-br from-bluePrimary to-blueSecondary blur-[50px] rounded-full absolute left-[-30%] top-[-50%]" />
-      <div className="w-[500px] h-[500px] bg-gradient-to-br from-blueSecondary to-bluePrimary blur-[50px] rounded-full absolute right-[-60%] top-[200px]" />
+      <div className="w-[500px] h-[500px] bg-gradient-to-br from-sky-400 to-cyan-300 blur-[50px] rounded-full absolute left-[-30%] top-[-50%]" />
+      <div className="w-[500px] h-[500px] bg-gradient-to-br from-sky-400 to-cyan-300 blur-[50px] rounded-full absolute right-[-60%] top-[200px]" />
       <div
         onClick={() => setFormType!("infoForm")}
         className="relative pb-4 pl-6 w-fit"
@@ -136,7 +137,7 @@ export const DonorForm = ({ setFormType, status }: formProps) => {
             }
             value={form.fullName}
             className={classNames({
-              "rounded-lg bg-white text-sky-500 p-2 xl:py-3 xl:pl-4 w-[75vw] placeholder:text-sky-500 xl:w-[375px] border-2 border-sky-800 outline-none transition-all cursor-pointer hover:shadow-md hover:shadow-slate-500 focus:bg-sky-100 text-xl":
+              "rounded-lg bg-white text-sky-500 p-2 xl:py-3 xl:pl-4 w-[75vw] placeholder:text-sky-500 xl:w-[375px] border-2 border-sky-800 outline-none transition-all cursor-pointer hover:shadow-md hover:shadow-slate-500 focus:ring-2 focus:ring-sky-800 text-xl":
                 form.valid.fullName || form.touched.fullName,
               "p-2 rounded-md w-[75vw] xl:w-[375px] bg-slate-200 border-b-2  border-red-600 border-2 shadow-red-600 placeholder-red-600 cursor-pointer hover:bg-slate-100 transition-colors delay-100 outline-none text-lg":
                 !form.valid.fullName && !form.touched.fullName,
@@ -162,7 +163,7 @@ export const DonorForm = ({ setFormType, status }: formProps) => {
               }))
             }
             className={classNames({
-              "scroll-pb-12 rounded-lg bg-white text-sky-500 p-2 xl:py-3 xl:pl-4 w-[75vw] placeholder:text-sky-500 xl:w-[375px] border-2 border-sky-800 outline-none transition-all cursor-pointer hover:shadow-md hover:shadow-slate-500 focus:bg-sky-100 text-xl":
+              "scroll-pb-12 rounded-lg bg-white text-sky-500 p-2 xl:py-3 xl:pl-4 w-[75vw] placeholder:text-sky-500 xl:w-[375px] border-2 border-sky-800 outline-none transition-all cursor-pointer hover:shadow-md hover:shadow-slate-500 focus:ring-2 focus:ring-sky-800 text-xl":
                 form.valid.message || form.touched.message,
               "p-2 rounded-md w-[75vw] bg-slate-200 border-b-2 xl:w-[375px] border-red-600 border-2 shadow-red-600 placeholder-red-600 cursor-pointer hover:bg-slate-100 transition-colors delay-100 outline-none text-lg":
                 !form.valid.message && !form.touched.message,

@@ -148,8 +148,8 @@ export const InfoForm = ({ setFormType }: formProps) => {
   // bg-gradient-to-br from-sky-400 to-cyan-300
   return (
     <FormLayout>
-      <div className="w-[500px] h-[500px] bg-gradient-to-br from-bluePrimary to-blueSecondary blur-[50px] rounded-full absolute left-[-20%] top-[-45%]" />
-      <div className="w-[300px] h-[300px] bg-gradient-to-br from-blueSecondary to-bluePrimary blur-[50px] rounded-full absolute right-[-10%] top-[500px]" />
+      <div className="w-[500px] h-[500px] bg-gradient-to-br from-sky-400 to-cyan-300 blur-[50px] rounded-full absolute left-[-20%] top-[-45%]" />
+      <div className="w-[300px] h-[300px] bg-gradient-to-br from-sky-400 to-cyan-300 blur-[50px] rounded-full absolute right-[-30%] top-[500px]" />
 
       <h2 className="relative pb-4 pl-6 text-4xl text-white">
         Info Credentials
@@ -172,7 +172,7 @@ export const InfoForm = ({ setFormType }: formProps) => {
             }
             value={form.firstName}
             className={classNames({
-              "relative rounded-lg placeholder:text-sky-500 border-2 border-sky-800 bg-white text-sky-500 p-2 xl:py-3 xl:pl-4 w-[75vw] xl:w-[375px] outline-none transition-all cursor-pointer hover:shadow-md hover:shadow-slate-500 focus:bg-sky-100 text-xl":
+              "relative rounded-lg placeholder:text-sky-500 border-2 border-sky-800 bg-white text-sky-500 p-2 xl:py-3 xl:pl-4 w-[75vw] xl:w-[375px] outline-none transition-all cursor-pointer hover:shadow-md hover:shadow-slate-500 focus:ring-2 focus:ring-sky-800 text-xl":
                 form.valid.firstName || form.touched.firstName,
               "relative rounded-lg p-2 xl:py-3 xl:pl-4 w-[75vw] xl:w-[375px] bg-white border-b-2  border-red-600 border-2 shadow-red-600 placeholder-red-600 cursor-pointer hover:bg-slate-100 transition-colors delay-100 outline-none text-xl":
                 !form.valid.firstName && !form.touched.firstName,
@@ -199,7 +199,7 @@ export const InfoForm = ({ setFormType }: formProps) => {
             }
             value={form.lastName}
             className={classNames({
-              "rounded-lg bg-white text-sky-500  p-2 xl:py-3 xl:pl-4 w-[75vw] placeholder:text-sky-500 xl:w-[375px] border-2 border-sky-800 outline-none transition-all cursor-pointer hover:shadow-md hover:shadow-slate-500 focus:bg-sky-100 text-xl":
+              "rounded-lg bg-white text-sky-500  p-2 xl:py-3 xl:pl-4 w-[75vw] placeholder:text-sky-500 xl:w-[375px] border-2 border-sky-800 outline-none transition-all cursor-pointer hover:shadow-md hover:shadow-slate-500 focus:ring-2 focus:ring-sky-800  text-xl":
                 form.valid.lastName || form.touched.lastName,
               "rounded-lg p-2 xl:py-3 xl:pl-4 w-[75vw] xl:w-[375px] border-b-2 border-red-600 border-2 shadow-red-600 placeholder-red-600 cursor-pointer hover:bg-slate-100 transition-colors delay-100 outline-none text-xl":
                 !form.valid.lastName && !form.touched.lastName,
@@ -226,7 +226,7 @@ export const InfoForm = ({ setFormType }: formProps) => {
             }
             value={form.email}
             className={classNames({
-              "rounded-lg bg-white text-sky-500 p-2 xl:py-3 xl:pl-4 w-[75vw] placeholder:text-sky-500 xl:w-[375px] border-2 border-sky-800 outline-none transition-all cursor-pointer hover:shadow-md hover:shadow-slate-500 focus:bg-sky-100 text-xl":
+              "rounded-lg bg-white text-sky-500 p-2 xl:py-3 xl:pl-4 w-[75vw] placeholder:text-sky-500 xl:w-[375px] border-2 border-sky-800 outline-none transition-all cursor-pointer hover:shadow-md hover:shadow-slate-500 focus:ring-2 focus:ring-sky-800 text-xl":
                 form.valid.email || form.touched.email,
               "rounded-lg p-2 xl:py-3 xl:pl-4 w-[75vw] xl:w-[375px] border-b-2 border-red-600 border-2 shadow-red-600 placeholder-red-600 cursor-pointer hover:bg-slate-100 transition-colors delay-100 outline-none text-xl":
                 !form.valid.email && !form.touched.email,
@@ -241,7 +241,7 @@ export const InfoForm = ({ setFormType }: formProps) => {
         } */}
       </div>
 
-      <p className="relative pb-2 pl-8 text-lg text-sky-500 2xl:text-2xl">
+      <p className="relative pb-2 pl-8 text-lg text-bluePrimary 2xl:text-2xl">
         Choose a one-time amount
       </p>
       <div className="relative grid grid-cols-2 gap-2 w-[250px] 2xl:w-[320px] 2xl:grid-cols-3 2xl:gap-4 mx-auto pb-2 justify-items-center">
@@ -274,7 +274,7 @@ export const InfoForm = ({ setFormType }: formProps) => {
             }
             value={form.amount}
             className={classNames({
-              "border-2 rounded-lg relative bg-white text-sky-500 placeholder:text-sky-500  p-2 xl:py-3 pl-8 w-[75vw] xl:w-[375px] outline-none transition-all cursor-pointer border-sky-800 hover:shadow-md hover:shadow-slate-500 focus:bg-sky-100 text-xl":
+              "border-2 rounded-lg relative bg-white text-sky-500 placeholder:text-sky-500  p-2 xl:py-3 pl-8 w-[75vw] xl:w-[375px] outline-none transition-all cursor-pointer border-sky-800 hover:shadow-md hover:shadow-slate-500 focus:ring-2 focus:ring-sky-800  text-xl":
                 form.valid.amount || form.touched.amount,
               "rounded-lg relative p-2 pl-8 xl:py-3 w-[75vw] xl:w-[375px] bg-white border-b-2 border-red-600 border-2 shadow-red-600 placeholder-red-600 cursor-pointer hover:bg-slate-100 transition-colors delay-100 outline-none text-xl":
                 !form.valid.amount && !form.touched.amount,

@@ -6,7 +6,7 @@ export const ErrorSVG = () => {
       viewBox="0 0 24 24"
       stroke-width="1.5"
       stroke="red"
-      className="absolute w-6 h-6 top-[0px] right-1"
+      className="absolute w-6 h-6 top-[7px] right-2"
     >
       <path
         stroke-linecap="round"

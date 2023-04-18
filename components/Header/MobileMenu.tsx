@@ -49,12 +49,7 @@ export const MobileMenu = ({
   links,
 }: MobileMenuProps) => {
   const navStyles = classNames(
-    "sm:hidden fixed w-[75vw] top-[77px] right-0 z-40  flex flex-col items-center justify-evenly h-screen",
-    {
-      "bg-gradient-to-t from-[#2e7e9b] via-[#3e9cb9] to-[#62b5ce]":
-        route === "home",
-      "bg-slate-200": route === "donate",
-    }
+    "sm:hidden fixed w-[75vw] top-[77px] right-0 z-40  flex flex-col items-center justify-evenly h-screen bg-gradient-to-t from-[#2e7e9b] via-[#3e9cb9] to-[#62b5ce]"
   );
 
   const ulStyles = classNames({

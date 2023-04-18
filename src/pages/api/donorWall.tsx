@@ -1,6 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+import { PrismaClient } from "@prisma/client";
 
 const isEmpty = (value: string) => value.trim() === "";
+const prisma = new PrismaClient();
 
 export default async function infoCredenitalsHandler(
   req: NextApiRequest,
@@ -10,10 +12,13 @@ export default async function infoCredenitalsHandler(
     return;
   }
 
-  const { fullName, message } = req.body;
+  const { fullName, message, amount } = req.body;
 
   const fullNameIsValid = !isEmpty(fullName);
   const messageIsValid = !isEmpty(message);
+
+  // Run a more secure validation rather than just checking if the value exists...
+  // const amountIsValid = !isEmpty(amount);
 
   const donorWallPostIsValid = fullNameIsValid && messageIsValid;
 
@@ -24,14 +29,19 @@ export default async function infoCredenitalsHandler(
     return;
   }
 
-  const data = {
-    fullName,
-    message,
-  };
+  const newPost = await prisma.post.create({
+    data: {
+      fullName: fullName,
+      message: message,
+      amount: amount,
+    },
+  });
+
+  prisma.$disconnect();
 
   res.status(201).json({
     message: "Valid credenitals",
     formType: "paymentForm",
-    data,
+    newPost,
   });
 }

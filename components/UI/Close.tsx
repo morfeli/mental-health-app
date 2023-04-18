@@ -5,7 +5,7 @@ export const Close = () => {
       height="40"
       fill="none"
       viewBox="0 0 24 24"
-      className="absolute cursor-pointer top-5 right-5"
+      className="absolute cursor-pointer top-6 right-5"
     >
       <path
         stroke="currentColor"

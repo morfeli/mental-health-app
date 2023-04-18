@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import { DonorForm } from "./DonorForm";
 import { InfoForm } from "./InfoForm";
-import { StatusBar } from "./StatusBar";
+import { StatusBar } from "../StatusBar";
 import { StripeForm } from "./StripeForm";
 import { useMindScapeContext } from "components/store/useMindScapeContext";
 import { Modal } from "components/UI/Modal";

@@ -73,8 +73,8 @@ export const CheckoutForm = ({ setFormType }: formProps) => {
 
   return (
     <FormLayout>
-      <div className="w-[500px] h-[500px] bg-gradient-to-br from-bluePrimary to-blueSecondary blur-[100px] rounded-full absolute left-[-30%] top-[-30%]" />
-      <div className="w-[500px] h-[500px] bg-gradient-to-br from-blueSecondary to-bluePrimary blur-[100px] rounded-full absolute right-[-10%] top-[400px]" />
+      <div className="w-[500px] h-[500px] bg-gradient-to-br from-sky-400 to-cyan-300 blur-[100px] rounded-full absolute left-[-30%] top-[-30%]" />
+      <div className="w-[500px] h-[500px] bg-gradient-to-br from-sky-400 to-cyan-300 blur-[100px] rounded-full absolute right-[-10%] top-[400px]" />
       <form
         id="payment-form"
         onSubmit={handleSubmit}

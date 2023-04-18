@@ -33,7 +33,7 @@ const NavItem = ({
       "pl-12 lg:pl-16": nav,
       "text-xl": nav,
       "text-2xl": !nav,
-      "text-[#dcdcdc]": route === "donate",
+      "text-white": route === "donate",
     }
   );
 

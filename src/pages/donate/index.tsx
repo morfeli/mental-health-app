@@ -4,7 +4,7 @@ import { Footer } from "components/LandingPage/Footer/Footer";
 
 const links = [
   { name: "Home", link: "/", id: 1 },
-  { name: "Donor Wall", link: "/donorwall", id: 2 },
+  { name: "Donor Wall", link: "/donate/donorwall", id: 2 },
   { name: "Resources", link: "/resources", id: 3 },
 ];
 
