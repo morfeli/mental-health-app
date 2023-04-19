@@ -16,6 +16,10 @@
   color: #0cbaba;
 }
 
+.test {
+  background-color: #0cbaba;
+}
+
 :root {
   --width: 200px;
   --x-speed: 10s;

@@ -3,6 +3,7 @@ import { PrismaClient } from "@prisma/client";
 import { DonorWallPosts } from "components/DonorWallPage/DonorWallPosts";
 import { Header } from "components/Header/Header";
 import { Footer } from "components/LandingPage/Footer/Footer";
+import { DonorWallLayout } from "components/Layouts.tsx/DonorWallLayout";
 
 export type DonorWallProps = {
   posts: {
@@ -25,20 +26,24 @@ export default function DonorWall({ posts }: DonorWallProps) {
     return <p>no posts</p>;
   }
   return (
-    <div className="flex flex-col justify-between h-screen bg-slate-100 font-Author">
+    <DonorWallLayout>
       <Header links={links} route="donate" />
 
       <DonorWallPosts posts={posts} />
 
       <Footer />
-    </div>
+    </DonorWallLayout>
   );
 }
 
 export async function getServerSideProps() {
   const prisma = new PrismaClient();
 
-  const posts = await prisma.post.findMany();
+  const posts = await prisma.post.findMany({
+    orderBy: {
+      id: "desc",
+    },
+  });
 
   prisma.$disconnect();
 

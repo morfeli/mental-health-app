@@ -20,6 +20,10 @@ module.exports = {
       fontFamily: {
         Author: ["Author", "sans-serif"],
       },
+      width: {
+        "40vw": "40vw",
+        "60vw": "60vw",
+      },
     },
   },
   plugins: [],

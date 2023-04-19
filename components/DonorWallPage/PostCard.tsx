@@ -1,3 +1,4 @@
+import moment from "moment";
 import Image from "next/image";
 
 type PostCardProps = {
@@ -15,10 +16,11 @@ export const PostCard = ({
   createdAt,
   amount,
 }: PostCardProps) => {
+  const formatDate = moment(createdAt).subtract(1, "days").calendar();
   return (
     <li
       id={JSON.stringify(id)}
-      className="relative flex flex-col m-8 text-center text-white border-4 border-white rounded-lg shadow-2xl bg-gradient-to-tr from-sky-400 to-bluePrimary xl:w-[500px] mx-auto"
+      className="relative flex flex-col  text-center text-white border-4 border-white rounded-lg shadow-2xl bg-gradient-to-tr from-sky-400 to-bluePrimary xl:w-[375px] mx-auto"
     >
       <div className="flex items-center justify-between p-4">
         <h3 className="text-sm">{fullName}</h3>
@@ -36,7 +38,7 @@ export const PostCard = ({
         /> */}
       <div className="flex items-center justify-between p-4">
         <p className="text-sm">${amount}</p>
-        <p className="self-end text-xs"> {createdAt}</p>
+        <p className="self-end text-xs"> {formatDate}</p>
       </div>
     </li>
   );

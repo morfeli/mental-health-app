@@ -29,7 +29,7 @@ export const ProcessForm = () => {
   return (
     <section>
       <StatusBar status={status} />
-      <div className="">
+      <div>
         {status === "infoForm" && (
           <InfoForm setFormType={setStatus} status={status} />
         )}
@@ -50,11 +50,25 @@ export const ProcessForm = () => {
             <DialogHeader>
               <DialogTitle>Thank you for your support!</DialogTitle>
               <DialogDescription>
-                All donations are proceeded to NAMI. We thank you for supporting
-                our goal in causing awareness towards mental health. We sent you
-                an email confirmation regarding your contribution! If you
-                haven't done so already, we encourage you to sign up on our
-                platform to ultilize the User Therapy Dashboard.
+                We are incredibly grateful for your recent donation to our
+                mental health awareness campaign. Your generosity will go a long
+                way in helping us raise awareness, break down stigmas, and
+                provide support for individuals and families affected by mental
+                health issues.
+              </DialogDescription>
+              <DialogDescription>
+                With compassion and understanding, we can build a society where
+                everyone feels empowered to openly discuss mental health and get
+                the help they need. Your donation is a meaningful step towards
+                that goal. Thank you for your kindness and support. Together, we
+                are making a difference.
+              </DialogDescription>
+              <DialogDescription>
+                All donations are proceeded to NAMI. Once again, thank you for
+                your kindness and generosity. We sent you an email confirmation
+                regarding your contribution! If you haven't done so already, we
+                encourage you to sign up on our platform to ultilize the User
+                Therapy Dashboard.
               </DialogDescription>
             </DialogHeader>
           </DialogContent>

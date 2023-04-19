@@ -52,8 +52,8 @@ export const Header = ({ route, links }: HeaderProps) => {
 
   return (
     <header className="fixed z-[60] text-white w-screen transition duration-300 ease-in-out bg-opacity-50 shadow-lg transform-gpu border-b-2 backdrop-blur-sm ">
-      <div className="flex items-center justify-between w-screen px-8 py-3 bg-opacity-40 bg-zinc-800 sm:px-12 md:px-16 lg:pl-24 sm:py-6 xl:px-28">
-        <h2 className="text-xl italic text-white z-[60] xl:pl-6">MindScape</h2>
+      <div className="flex items-center justify-between w-screen px-8 py-3 bg-opacity-40 bg-zinc-800 sm:px-12 md:px-16 lg:pl-24 sm:py-6 xl:px-28 2xl:px-56">
+        <h2 className="text-xl italic text-white z-[60]">MindScape</h2>
         <MobileBtn isOpen={isOpen} toggleMenu={toggleMenuHandler} />
         <MobileMenu
           isOpen={isOpen}

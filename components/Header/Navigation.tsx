@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import NavItem from "./NavItem";
 import { Button } from "components/UI/Button";
 import { HeaderProps } from "./Header";
@@ -20,7 +22,9 @@ export const Navigation = ({ route, links }: HeaderProps) => {
         {/* <NavItem name="About" link="About" nav />
         <NavItem name="Donate" link="Donate" nav />
         <NavItem name="Resources" link="Resources" nav /> */}
-        <Button styles="bg-[#0cbaba] ml-12 w-[80px] py-0">Login</Button>
+        <Link href="/login">
+          <Button styles="bg-[#0cbaba] ml-12 w-[80px] py-0">Login</Button>
+        </Link>
         {/* <NavItem name="Dashboard" link="Dashboard" nav /> */}
       </ul>
     </nav>

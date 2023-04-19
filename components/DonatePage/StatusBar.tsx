@@ -12,7 +12,7 @@ export const StatusBar = ({ status }: StatusBarProps) => {
 
   return (
     <div className="pt-8 pb-2">
-      <div className="flex items-center justify-between w-[90vw] h-1 bg-gradient-to-t from-gray-900 via-gray-100 to-gray-900 mx-auto relative xl:w-[600px]">
+      <div className="flex items-center justify-between  w-[90vw] h-1 bg-gradient-to-t from-gray-900 via-gray-100 to-gray-900 mx-auto relative xl:w-[450px]">
         <div
           className={classNames(
             "h-1 bg-bluePrimary transition-all ease-in-out delay-150 duration-1000 absolute",

@@ -146,12 +146,10 @@ export const InfoForm = ({ setFormType }: formProps) => {
   // bg-gradient-to-br from-sky-400 to-cyan-300
   return (
     <FormLayout>
-      <div className="w-[500px] h-[500px] bg-gradient-to-br from-sky-400 to-cyan-300 blur-[50px] rounded-full absolute left-[-20%] top-[-45%]" />
-      <div className="w-[300px] h-[300px] bg-gradient-to-br from-sky-400 to-cyan-300 blur-[50px] rounded-full absolute right-[-30%] top-[500px]" />
+      <div className="w-[500px] h-[500px] bg-[#0cbaba] blur-[50px] rounded-full absolute left-[-20%] top-[-45%]" />
+      <div className="w-[300px] h-[300px] bg-[#0cbaba] blur-[50px] rounded-full absolute right-[-30%] top-[500px]" />
 
-      <h2 className="relative pb-4 pl-6 text-4xl text-white">
-        Info Credentials
-      </h2>
+      <h2 className="relative pb-4 text-4xl text-white">Info Credentials</h2>
       <div className="relative flex flex-col self-center pb-4">
         <label htmlFor="firstName">
           <input
@@ -239,14 +237,24 @@ export const InfoForm = ({ setFormType }: formProps) => {
         } */}
       </div>
 
-      <p className="relative pb-2 pl-8 text-lg text-bluePrimary 2xl:text-2xl">
+      <p className="relative pb-1 pl-8 text-lg text-bluePrimary 2xl:text-2xl">
         Choose a one-time amount
       </p>
-      <div className="relative grid grid-cols-2 gap-2 w-[250px] 2xl:w-[320px] 2xl:grid-cols-3 2xl:gap-4 mx-auto pb-2 justify-items-center">
+      <div className="relative grid grid-cols-3 gap-2 w-[350px] 2xl:w-[320px] 2xl:grid-cols-3 2xl:gap-4 mx-auto pb-2 justify-items-center">
         {presetAmountValues.map((item, i) => (
           <div
             key={item}
-            className="w-24 py-2 m-2 text-lg text-center bg-white border-2 rounded-md shadow-md cursor-pointer text-slate-600 border-bluePrimary hover:bg-gradient-to-br from-sky-400 to-cyan-300 hover:text-white"
+            onClick={() => {
+              setForm((current) => ({
+                ...current,
+                amount: JSON.stringify(item),
+                touched: {
+                  ...current.touched,
+                  amount: true,
+                },
+              }));
+            }}
+            className="w-24 py-2 m-2 text-lg text-center bg-white border-2 rounded-md shadow-md cursor-pointer text-slate-600 border-sky-800 hover:bg-gradient-to-br from-sky-400 to-cyan-300 hover:text-white"
           >
             ${item}
           </div>
@@ -284,7 +292,7 @@ export const InfoForm = ({ setFormType }: formProps) => {
       </div>
 
       <div
-        className="mt-[3rem] self-center relative"
+        className="mt-[1rem] self-center relative"
         onClick={routeToDonateForm}
       >
         <NextBtn isValid={validInfoCredentials} />

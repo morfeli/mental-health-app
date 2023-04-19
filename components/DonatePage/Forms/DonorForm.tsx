@@ -107,15 +107,15 @@ export const DonorForm = ({ setFormType, status }: formProps) => {
 
   return (
     <FormLayout status={status}>
-      <div className="w-[500px] h-[500px] bg-gradient-to-br from-sky-400 to-cyan-300 blur-[50px] rounded-full absolute left-[-30%] top-[-50%]" />
-      <div className="w-[500px] h-[500px] bg-gradient-to-br from-sky-400 to-cyan-300 blur-[50px] rounded-full absolute right-[-60%] top-[200px]" />
+      <div className="w-[500px] h-[500px] bg-[#0cbaba] to-cyan-300 blur-[50px] rounded-full absolute left-[-30%] top-[-50%]" />
+      <div className="w-[500px] h-[500px] bg-[#0cbaba] blur-[50px] rounded-full absolute right-[-60%] top-[200px]" />
       <div
         onClick={() => setFormType!("infoForm")}
-        className="relative pb-4 pl-6 w-fit"
+        className="relative pb-4 w-fit"
       >
         <GoBackBtn />
       </div>
-      <h2 className="relative pb-4 pl-8 text-3xl text-white">
+      <h2 className="relative pb-4 pl-2 text-3xl text-white">
         Donor wall post
       </h2>
 
@@ -173,7 +173,10 @@ export const DonorForm = ({ setFormType, status }: formProps) => {
         </label>
       </div>
 
-      <div className="self-center mt-[3rem]" onClick={routeToPaymentForm}>
+      <div
+        className="self-center mt-[3rem] relative"
+        onClick={routeToPaymentForm}
+      >
         <NextBtn />
       </div>
     </FormLayout>
