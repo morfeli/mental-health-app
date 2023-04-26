@@ -1,4 +1,5 @@
 import { Button } from "components/UI/Button";
+import Link from "next/link";
 
 export const Support = () => {
   return (
@@ -11,7 +12,11 @@ export const Support = () => {
           daily activies and find the way to yourself. Wellness made simple, for
           you.
         </p>
-        <Button styles="py-2 w-[100px] bg-[#00b4d8]">Login</Button>
+        <Link href="/login">
+          <Button styles="py-2 w-[100px] bg-[#00b4d8] text-center">
+            Login
+          </Button>
+        </Link>
       </div>
     </section>
   );

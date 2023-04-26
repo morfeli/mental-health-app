@@ -7,7 +7,7 @@ import { SignUpForm } from "./SignUpForm";
 export const UserForm = () => {
   const [isSignedUp, setIsSignedUp] = useState<boolean>(true);
   return (
-    <form className="h-screen bg-white w-[40vw] justify-center flex flex-col font-Author relative">
+    <section className="h-screen bg-white w-[40vw] justify-center flex flex-col font-Author relative">
       <div className="flex flex-col pl-20">
         <h2>MindScape Logo</h2>
 
@@ -22,6 +22,6 @@ export const UserForm = () => {
       ) : (
         <SignUpForm setHandler={setIsSignedUp} />
       )}
-    </form>
+    </section>
   );
 };

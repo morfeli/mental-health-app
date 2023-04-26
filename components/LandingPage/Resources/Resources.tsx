@@ -1,7 +1,7 @@
 import { ArrowUp } from "components/Icons/ArrowUp";
 import { SectionLayout } from "components/Layouts.tsx/SectionLayout";
 import { Button } from "components/UI/Button";
-import { LineBreak } from "components/UI/LineBreak";
+import Link from "next/link";
 
 export const Resources = () => {
   return (
@@ -18,10 +18,12 @@ export const Resources = () => {
       </div>
 
       <div className="pt-8">
-        <Button styles="w-[300px] mx-auto pl-6 py-2 bg-[#168aad] text-white border-white border-[1px] shadow-2xl hover:bg-bluePrimary text-lg flex items-center relative">
-          Learn more about Mental Health
-          <ArrowUp />
-        </Button>
+        <Link href="/resources">
+          <Button styles="w-[300px] mx-auto pl-6 py-2 bg-[#168aad] text-white border-white border-[1px] shadow-2xl hover:bg-bluePrimary text-lg flex items-center relative">
+            Learn more about Mental Health
+            <ArrowUp />
+          </Button>
+        </Link>
       </div>
       {/* <LineBreak /> */}
     </SectionLayout>

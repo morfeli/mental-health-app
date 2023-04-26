@@ -3,7 +3,7 @@ import { DonorWallProps } from "@/pages/donate/donorwall";
 
 export const DonorWallPosts = ({ posts }: DonorWallProps) => {
   return (
-    <section className="h-full pt-24 xl:pt-36 xl:flex xl:justify-around xl:px-4 xl:pb-8 bg-gradient-to-tl from-sky-400 to-cyan-300">
+    <section className="pt-24 xl:pt-36 xl:flex xl:justify-around xl:px-4 xl:pb-8 bg-gradient-to-tl from-sky-400 to-cyan-300">
       <div className="relative flex flex-col items-start p-4 pl-5 text-white">
         <h1 className="text-4xl tracking-tighter uppercase xl:text-6xl">
           Thank you Donors!
@@ -19,8 +19,8 @@ export const DonorWallPosts = ({ posts }: DonorWallProps) => {
         </p>
       </div>
 
-      <ul className="bg-white xl:w-[550px] shadow-inner rounded-lg h-[650px] overflow-hidden overflow-y-scroll scroll-smooth p-4 border-4 border-bluePrimary relative flex flex-col gap-10">
-        {posts.map(({ fullName, message, createdAt, id, amount }) => (
+      <ul className="xl:w-[800px]  rounded-lg h-[650px] overflow-hidden overflow-y-scroll scroll-smooth p-4  relative flex flex-col gap-4 xl:grid xl:grid-cols-2">
+        {posts.map(({ fullName, message, createdAt, id, amount }, i) => (
           <PostCard
             fullName={fullName}
             message={message}
@@ -28,6 +28,7 @@ export const DonorWallPosts = ({ posts }: DonorWallProps) => {
             id={id}
             amount={amount}
             key={id}
+            index={i}
           />
         ))}
       </ul>

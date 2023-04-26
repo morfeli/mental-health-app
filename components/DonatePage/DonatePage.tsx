@@ -2,7 +2,7 @@ import { ProcessForm } from "./Forms/ProcessForm";
 
 export const DonatePage = () => {
   return (
-    <section className="relative z-50 h-full pb-16 bg-white 2xl:h-screen pt-28 xl:pt-20 xl:flex xl:justify-around xl:px-4 bg-gradient-to-br from-sky-400 to-cyan-300 ">
+    <section className="relative z-50 h-full bg-white 2xl:h-screen pt-28 xl:pt-20 xl:flex xl:justify-around xl:px-4 bg-gradient-to-br from-sky-400 to-cyan-300 ">
       <div className="w-[900px] h-[900px] bg-[#184e77] blur-[150px] rounded-full absolute left-[30%] top-[-180px] " />
 
       <div className="relative p-4 pl-5 text-white xl:pt-20">

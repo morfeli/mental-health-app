@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { MobileBtn } from "./MobileBtn";
 import { MobileMenu } from "./MobileMenu";
 import { Navigation } from "./Navigation";
+import { HomeProps } from "@/pages";
 
 export type HeaderProps = {
   route: string;
@@ -10,9 +11,16 @@ export type HeaderProps = {
     link: string;
     id: number;
   }[];
+
+  data?: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    objectId: number;
+  };
 };
 
-export const Header = ({ route, links }: HeaderProps) => {
+export const Header = ({ route, links, data }: HeaderProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [innerWidth, setInnerWidth] = useState<number>();
 
@@ -61,7 +69,7 @@ export const Header = ({ route, links }: HeaderProps) => {
           route={route}
           links={links}
         />
-        <Navigation route={route} links={links} />
+        <Navigation route={route} links={links} data={data} />
       </div>
     </header>
   );

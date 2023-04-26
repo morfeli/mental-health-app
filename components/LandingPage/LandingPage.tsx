@@ -7,6 +7,7 @@ import { Footer } from "./Footer/Footer";
 import { Hero } from "./Hero/Hero";
 import { Resources } from "./Resources/Resources";
 import { Support } from "./Support/Support";
+import { HomeProps } from "@/pages";
 
 const links = [
   { name: "About", link: "About", id: 1 },
@@ -14,7 +15,7 @@ const links = [
   { name: "Resources", link: "Resources", id: 3 },
 ];
 
-export const LandingPage = () => {
+export const LandingPage = ({ data }: HomeProps) => {
   useEffect(() => {
     let section = document.querySelectorAll("section");
 
@@ -36,7 +37,7 @@ export const LandingPage = () => {
   }, []);
   return (
     <>
-      <Header route="home" links={links} />
+      <Header route="home" links={links} data={data} />
       <main className="body">
         <Hero />
         <About />

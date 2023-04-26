@@ -5,7 +5,7 @@ export const DonateSVG = () => {
       height="24"
       fill="none"
       viewBox="0 0 24 24"
-      className="absolute right-3"
+      // className="absolute right-3"
     >
       <path
         stroke="currentColor"

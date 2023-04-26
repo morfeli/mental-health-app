@@ -2,7 +2,6 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { PrismaClient } from "@prisma/client";
 
 const isEmpty = (value: string) => value.trim() === "";
-const prisma = new PrismaClient();
 
 export default async function infoCredenitalsHandler(
   req: NextApiRequest,
@@ -12,6 +11,7 @@ export default async function infoCredenitalsHandler(
     return;
   }
 
+  const prisma = new PrismaClient();
   const { fullName, message, amount } = req.body;
 
   const fullNameIsValid = !isEmpty(fullName);

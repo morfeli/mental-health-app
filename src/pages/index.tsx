@@ -1,8 +1,19 @@
 import Head from "next/head";
 
 import { LandingPage } from "components/LandingPage/LandingPage";
+import { GetServerSideProps } from "next";
+import { getSession } from "next-auth/react";
 
-export default function Home() {
+export type HomeProps = {
+  data: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    objectId: number;
+  };
+};
+
+export default function Home({ data }: HomeProps) {
   return (
     <>
       <Head>
@@ -11,7 +22,25 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <LandingPage />
+      <LandingPage data={data} />
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const session = await getSession({ req: context.req });
+
+  if (!session) {
+    return {
+      props: {
+        data: null,
+      },
+    };
+  } else {
+    return {
+      props: {
+        data: session.user?.name,
+      },
+    };
+  }
+};

@@ -1,5 +1,5 @@
 import moment from "moment";
-import Image from "next/image";
+import { motion } from "framer-motion";
 
 type PostCardProps = {
   fullName: string;
@@ -7,6 +7,7 @@ type PostCardProps = {
   message: string;
   createdAt: string;
   amount: number;
+  index: number;
 };
 
 export const PostCard = ({
@@ -15,12 +16,20 @@ export const PostCard = ({
   message,
   createdAt,
   amount,
+  index,
 }: PostCardProps) => {
   const formatDate = moment(createdAt).subtract(1, "days").calendar();
   return (
-    <li
+    <motion.li
+      initial={{
+        opacity: 0,
+        translateX: index % 2 === 0 ? -50 : 50,
+        translateY: -50,
+      }}
+      animate={{ opacity: 1, translateX: 0, translateY: 0 }}
+      transition={{ duration: 0.8, delay: index * 0.2 }}
       id={JSON.stringify(id)}
-      className="relative flex flex-col  text-center text-white border-4 border-white rounded-lg shadow-2xl bg-gradient-to-tr from-sky-400 to-bluePrimary xl:w-[375px] mx-auto"
+      className="relative flex flex-col  text-center text-white border-4 border-white rounded-lg shadow-2xl bg-sky-800 w-[350px] mx-auto"
     >
       <div className="flex items-center justify-between p-4">
         <h3 className="text-sm">{fullName}</h3>
@@ -30,16 +39,10 @@ export const PostCard = ({
       </div>
       <p className="py-4 text-xl">"{message}"</p>
 
-      {/* <Image
-          src={"/nami-support-2.png"}
-          alt="nami-support"
-          width={50}
-          height={50}
-        /> */}
       <div className="flex items-center justify-between p-4">
         <p className="text-sm">${amount}</p>
         <p className="self-end text-xs"> {formatDate}</p>
       </div>
-    </li>
+    </motion.li>
   );
 };
