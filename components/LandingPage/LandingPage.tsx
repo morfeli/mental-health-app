@@ -7,7 +7,6 @@ import { Footer } from "./Footer/Footer";
 import { Hero } from "./Hero/Hero";
 import { Resources } from "./Resources/Resources";
 import { Support } from "./Support/Support";
-import { HomeProps } from "@/pages";
 
 const links = [
   { name: "About", link: "About", id: 1 },
@@ -15,7 +14,16 @@ const links = [
   { name: "Resources", link: "Resources", id: 3 },
 ];
 
-export const LandingPage = ({ data }: HomeProps) => {
+export type LandingPageProps = {
+  data?: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    id: number;
+  };
+};
+
+export const LandingPage = ({ data }: LandingPageProps) => {
   useEffect(() => {
     let section = document.querySelectorAll("section");
 
@@ -43,7 +51,7 @@ export const LandingPage = ({ data }: HomeProps) => {
         <About />
         <Donate />
         <Resources />
-        <Support />
+        <Support data={data} />
       </main>
       <Footer />
     </>

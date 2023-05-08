@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { signOut } from "next-auth/react";
-import { useRouter } from "next/router";
 
 import NavItem from "./NavItem";
 import { Button } from "components/UI/Button";
@@ -18,11 +17,10 @@ import {
 import { LogOut, User } from "lucide-react";
 
 export const Navigation = ({ route, links, data }: HeaderProps) => {
-  const router = useRouter();
-
   const onLogOut = () => {
     signOut();
   };
+
   return (
     <nav className="hidden sm:flex xl:pr-2">
       <ul className="flex items-center">
@@ -45,8 +43,8 @@ export const Navigation = ({ route, links, data }: HeaderProps) => {
                 <Avatar className="ml-12 transition-all duration-300 cursor-pointer hover:ring-2 hover:ring-slate-300">
                   {/* <AvatarImage src="https://github.com/shadcn.png" /> */}
                   <AvatarFallback>
-                    {data?.firstName.charAt(0).toUpperCase()}
-                    {data?.lastName.charAt(0).toUpperCase()}
+                    {data.firstName.charAt(0).toUpperCase()}
+                    {data.lastName.charAt(0).toUpperCase()}
                   </AvatarFallback>
                 </Avatar>
               </DropdownMenuTrigger>
@@ -54,14 +52,14 @@ export const Navigation = ({ route, links, data }: HeaderProps) => {
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <Link href="/dashboard">
-                  <DropdownMenuItem className="w-[100%] cursor-pointer hover:bg-bluePrimary hover:text-white">
+                  <DropdownMenuItem className="w-[100%] cursor-pointer hover:bg-bluePrimary hover:text-white focus:bg-bluePrimary focus:text-white">
                     <User className="w-4 h-4 mr-2" />
                     Therapy Dashboard
                   </DropdownMenuItem>
                 </Link>
 
                 <DropdownMenuItem
-                  className="mt-2 cursor-pointer hover:bg-bluePrimary hover:text-white"
+                  className="mt-2 cursor-pointer hover:bg-bluePrimary hover:text-white focus:bg-bluePrimary focus:text-white"
                   onClick={onLogOut}
                 >
                   <LogOut className="w-4 h-4 mr-2" />
@@ -77,8 +75,6 @@ export const Navigation = ({ route, links, data }: HeaderProps) => {
             </Button>
           </Link>
         )}
-
-        {/* <NavItem name="Dashboard" link="Dashboard" nav /> */}
       </ul>
     </nav>
   );

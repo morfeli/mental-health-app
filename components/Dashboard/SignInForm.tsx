@@ -86,6 +86,7 @@ export const SignInForm = ({ setHandler }: SignInFormProps) => {
         description: "Wellness awaits you",
       });
 
+      console.log("route to dashboard");
       setTimeout(() => {
         router.push("/dashboard");
       }, 3000);

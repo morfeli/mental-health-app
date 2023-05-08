@@ -6,10 +6,12 @@ import { getSession } from "next-auth/react";
 
 export type HomeProps = {
   data: {
-    firstName: string;
-    lastName: string;
-    email: string;
-    objectId: number;
+    user: {
+      firstName: string;
+      lastName: string;
+      email: string;
+      id: number;
+    };
   };
 };
 
@@ -22,7 +24,7 @@ export default function Home({ data }: HomeProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <LandingPage data={data} />
+      <LandingPage data={data?.user} />
     </>
   );
 }
@@ -39,7 +41,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   } else {
     return {
       props: {
-        data: session.user?.name,
+        data: session,
       },
     };
   }

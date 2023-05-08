@@ -1,15 +1,20 @@
 import { getSession } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import { GetServerSideProps } from "next";
+import { Questionaire } from "components/Dashboard/Questionaire";
 
 export default function Dashboard() {
   const { data: session, status } = useSession();
 
   if (status === "unauthenticated") {
-    return <p>error</p>;
+    return <p>error page here</p>;
   }
 
-  return <div>Dashboard</div>;
+  return (
+    <div>
+      <Questionaire />
+    </div>
+  );
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -23,8 +28,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       },
     };
   }
-
-  console.log(session);
 
   return {
     props: {

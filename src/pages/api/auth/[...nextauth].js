@@ -48,7 +48,7 @@ export default NextAuth({
 
         if (user) {
           return {
-            name: userInfo,
+            ...user,
           };
         } else {
           return null;
@@ -56,5 +56,27 @@ export default NextAuth({
       },
     }),
   ],
+  callbacks: {
+    async jwt({ token, user }) {
+      /* Step 1: update the token based on the user object */
+      if (user) {
+        token.lastName = user.lastName;
+        token.firstName = user.firstName;
+        token.email = user.email;
+        token.id = user.id;
+      }
+      return token;
+    },
+    session({ session, token }) {
+      /* Step 2: update the session.user based on the token object */
+      if (token && session.user) {
+        session.user.firstName = token.firstName;
+        session.user.lastName = token.lastName;
+        session.user.id = token.id;
+        session.user.email = token.email;
+      }
+      return session;
+    },
+  },
   secret: "MUNKNATION",
 });

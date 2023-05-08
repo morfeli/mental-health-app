@@ -16,7 +16,7 @@ export type HeaderProps = {
     firstName: string;
     lastName: string;
     email: string;
-    objectId: number;
+    id: number;
   };
 };
 
