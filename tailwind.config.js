@@ -1,5 +1,22 @@
 /** @type {import('tailwindcss').Config} */
 
+const plugin = require("tailwindcss/plugin");
+
+const styles = plugin(function ({ addUtilities }) {
+  addUtilities({
+    ".cardBackground": {
+      background:
+        "linear-gradient(#FF0180, #FF0180) padding-box, linear-gradient(#FF0180, #420F87) border-box",
+    },
+    ".animate-delay-sphere-2": {
+      animationDelay: "2s",
+    },
+    ".animate-delay-sphere-3": {
+      animationDelay: "4s",
+    },
+  });
+});
+
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -17,6 +34,25 @@ module.exports = {
         overLay: "rgba(0, 0, 0, 0.2)",
         overLay2: "rgba(0,0,0,0.1)",
       },
+      keyframes: {
+        blob: {
+          "0%": {
+            transform: "translate(0px,0px) scale(1)",
+          },
+          "33%": {
+            transform: "translate(30px,-50px) scale(1.1)",
+          },
+          "66%": {
+            transform: "translate(-20px, 20px) scale(0.9)",
+          },
+          "100%": {
+            transform: "translate(0px, 0px) scale(1)",
+          },
+        },
+      },
+      animation: {
+        blob: "blob 7s infinite",
+      },
       fontFamily: {
         Author: ["Author", "sans-serif"],
       },
@@ -26,5 +62,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [styles],
 };

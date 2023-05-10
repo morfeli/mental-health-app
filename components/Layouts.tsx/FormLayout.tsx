@@ -7,6 +7,3 @@ export const FormLayout = ({ children }: LayoutProps) => {
     </div>
   );
 };
-
-// bg-bluePrimary
-// bg-gradient-to-tl from-blue-400 from-10% to-emerald-400 to-90%
